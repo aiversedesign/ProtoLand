@@ -15,30 +15,7 @@ body {
   line-height: 1.6;
 }
 
-.appbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--white);
-  border-bottom: 1px solid rgba(92, 61, 46, 0.15);
-}
-.appbar-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.brand {
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  color: var(--dark-brown);
-  text-decoration: none;
-}
-.project-title {
-  color: rgba(92, 61, 46, 0.8);
-}
+/* Header removed in template to maximize preview area */
 
 main {
   max-width: 1100px;

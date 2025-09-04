@@ -11,6 +11,12 @@ window.PROJECTS = [
     title: 'Piano',
     description: 'Play a two-octave piano with your keyboard or mouse.',
     tags: ['Audio', 'Music']
+  },
+  {
+    slug: 'grocery-list',
+    title: 'Grocery List',
+    description: 'Create and manage your grocery list.',
+    tags: ['Productivity']
   }
 ];
 

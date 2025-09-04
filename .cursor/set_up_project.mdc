@@ -39,6 +39,28 @@ window.PROJECT_DATA = {
 - `title` and `description` populate the page; `tags`, `features`, and `links` are optional.
 - You can add any additional fields to `window.PROJECT_DATA` and render them in your project’s `index.html` script.
 
+### 2.1) Ensure `{slug}/index.html` loads and uses `data.js`
+Your project page must import its `data.js` and read `window.PROJECT_DATA`.
+Add this near the end of `<head>` (before any other scripts that use the data):
+```html
+<script defer src="./data.js"></script>
+<script>
+(function () {
+  const data = window.PROJECT_DATA || {};
+  const { title, description } = data;
+  if (title) document.title = `${title} • ProtoLand`;
+  const h1 = document.getElementById('hero-title');
+  const p = document.getElementById('hero-description');
+  if (h1 && title) h1.textContent = title;
+  if (p && description) p.textContent = description;
+  // Render any additional fields from data as needed
+})();
+</script>
+```
+Notes:
+- Load `data.js` before any scripts that read `window.PROJECT_DATA`.
+- Add any fields you like to `data.js` and render them similarly.
+
 ### 3) Register the project in the root manifest `projects.js`
 Edit `/Users/b1u3b01t/Documents/GitHub/protoland/projects.js` and add an entry:
 ```js
