@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project • ProtoLand</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./data.js"></script>
+</head>
+<body>
+  <header class="appbar">
+    <div class="appbar-inner">
+      <a class="brand" href="../">ProtoLand</a>
+      <div id="project-title" class="project-title">Project</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 id="hero-title">Project Title</h1>
+      <p id="hero-description">Short description of the project.</p>
+    </section>
+    <section class="content">
+      <p>This is a minimal starting point. Build your prototype here.</p>
+      <div id="tags-container" class="tags" aria-label="Tags"></div>
+      <div id="features-container" class="features" aria-label="Features"></div>
+      <div id="links-container" class="links" aria-label="Links"></div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 ProtoLand</footer>
+
+  <script>
+    (function () {
+      if (!window.PROJECT_DATA) return;
+      const { title, description, tags, features, links } = window.PROJECT_DATA;
+      if (title) {
+        document.title = `${title} • ProtoLand`;
+        const elTitle = document.getElementById('project-title');
+        const hero = document.getElementById('hero-title');
+        if (elTitle) elTitle.textContent = title;
+        if (hero) hero.textContent = title;
+      }
+      if (description) {
+        const desc = document.getElementById('hero-description');
+        if (desc) desc.textContent = description;
+      }
+
+      // Render optional tags as badges
+      if (Array.isArray(tags) && tags.length) {
+        const tagsRoot = document.getElementById('tags-container');
+        if (tagsRoot) {
+          const group = document.createElement('div');
+          group.className = 'tag-group';
+          tags.forEach(t => {
+            const span = document.createElement('span');
+            span.className = 'badge';
+            span.textContent = t;
+            group.appendChild(span);
+          });
+          const label = document.createElement('div');
+          label.className = 'section-label';
+          label.textContent = 'Tags';
+          tagsRoot.appendChild(label);
+          tagsRoot.appendChild(group);
+        }
+      }
+
+      // Render optional features as a list
+      if (Array.isArray(features) && features.length) {
+        const featuresRoot = document.getElementById('features-container');
+        if (featuresRoot) {
+          const label = document.createElement('div');
+          label.className = 'section-label';
+          label.textContent = 'Features';
+          const ul = document.createElement('ul');
+          ul.className = 'feature-list';
+          features.forEach(f => {
+            const li = document.createElement('li');
+            li.textContent = f;
+            ul.appendChild(li);
+          });
+          featuresRoot.appendChild(label);
+          featuresRoot.appendChild(ul);
+        }
+      }
+
+      // Render optional links
+      if (Array.isArray(links) && links.length) {
+        const linksRoot = document.getElementById('links-container');
+        if (linksRoot) {
+          const label = document.createElement('div');
+          label.className = 'section-label';
+          label.textContent = 'Links';
+          const wrap = document.createElement('div');
+          wrap.className = 'link-group';
+          links.forEach(link => {
+            if (!link || !link.href) return;
+            const a = document.createElement('a');
+            a.className = 'link-chip';
+            a.href = link.href;
+            a.target = link.target || '_blank';
+            a.rel = 'noreferrer noopener';
+            a.textContent = link.label || link.href;
+            wrap.appendChild(a);
+          });
+          linksRoot.appendChild(label);
+          linksRoot.appendChild(wrap);
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
+
+

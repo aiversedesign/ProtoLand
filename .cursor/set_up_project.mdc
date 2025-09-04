@@ -1,0 +1,74 @@
+---
+description: Step-by-step guide to add a new ProtoLand project and list it on home
+alwaysApply: false
+---
+### Goal
+Create a new project folder at `/{slug}` (copied from `_template`), register it in `projects.js`, and have it appear on the `index.html` grid.
+
+### Recommended local server (so links like `/your-slug/` work)
+```bash
+cd /Users/b1u3b01t/Documents/GitHub/protoland
+python3 -m http.server 5173
+```
+Then visit `http://localhost:5173/` in your browser.
+
+### 1) Duplicate the template and rename the folder
+```bash
+cd /Users/b1u3b01t/Documents/GitHub/protoland
+cp -R _template cool-widget
+```
+- Replace `cool-widget` with your desired slug. This slug must match the folder name and will be used in URLs: `/{slug}/`.
+
+### 2) Update the project data in `{slug}/data.js`
+Edit `/Users/b1u3b01t/Documents/GitHub/protoland/cool-widget/data.js`:
+```js
+window.PROJECT_DATA = {
+  slug: 'cool-widget',
+  title: 'Cool Widget',
+  description: 'Tiny interactive widget.',
+  tags: ['UI'],
+  // Any other fields your `index.html` needs:
+  features: ['Keyboard support', 'Responsive layout'],
+  links: [
+    { label: 'Spec', href: 'https://example.com/spec' },
+    { label: 'Figma', href: 'https://example.com/figma' }
+  ]
+};
+```
+- Ensure `slug` equals the folder name.
+- `title` and `description` populate the page; `tags`, `features`, and `links` are optional.
+- You can add any additional fields to `window.PROJECT_DATA` and render them in your project’s `index.html` script.
+
+### 3) Register the project in the root manifest `projects.js`
+Edit `/Users/b1u3b01t/Documents/GitHub/protoland/projects.js` and add an entry:
+```js
+window.PROJECTS = [
+  { slug: 'cool-widget', title: 'Cool Widget', description: 'Tiny interactive widget.', tags: ['UI'] },
+  // ...keep any other entries
+];
+```
+- Keep the array syntax valid. Order determines how projects are displayed.
+
+### 4) Verify
+- Open `http://localhost:5173/` → Confirm you see the new card.
+- Click it → It should navigate to `/cool-widget/` and show the template page with your title/description.
+
+### Structure reference
+```
+/Users/b1u3b01t/Documents/GitHub/protoland/
+  index.html           # Renders grid from projects.js
+  projects.js          # Manifest of listed projects
+  _template/           # Starter files to duplicate
+    index.html
+    data.js
+    styles.css
+  cool-widget/         # Your project (copied from _template)
+    index.html
+    data.js
+    styles.css
+```
+
+### Remove a project
+1) Delete its folder, e.g. `/cool-widget`.
+2) Remove its entry from `projects.js`.
+

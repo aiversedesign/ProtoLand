@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProtoLand</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --cream: #f6efe5;
+      --light-brown: #c8a97e;
+      --dark-brown: #5c3d2e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color: var(--dark-brown);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* App Bar */
+    .appbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--white);
+      border-bottom: 1px solid rgba(92, 61, 46, 0.15);
+    }
+    .appbar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: var(--dark-brown);
+      text-decoration: none;
+    }
+
+    /* Layout */
+    main {
+      max-width: 1100px;
+      margin: 28px auto 60px;
+      padding: 0 20px;
+    }
+    .intro {
+      margin: 18px 0 22px;
+      color: rgba(92, 61, 46, 0.8);
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    /* Card */
+    .card {
+      display: block;
+      background: var(--white);
+      border: 1px solid rgba(92, 61, 46, 0.15);
+      border-radius: 10px;
+      padding: 16px;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(92, 61, 46, 0.3);
+      box-shadow: 0 6px 18px rgba(92, 61, 46, 0.12);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      background: var(--light-brown);
+      color: var(--white);
+      padding: 4px 8px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      opacity: 0.9;
+    }
+    .card h3 {
+      margin: 8px 0 6px;
+      font-size: 18px;
+      color: var(--dark-brown);
+    }
+    .card p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(92, 61, 46, 0.75);
+    }
+
+    footer {
+      text-align: center;
+      color: rgba(92, 61, 46, 0.55);
+      font-size: 12px;
+      padding: 28px 0 40px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition: none; }
+    }
+  </style>
+  <meta name="theme-color" content="#f6efe5" />
+</head>
+<body>
+  <header class="appbar">
+    <div class="appbar-inner">
+      <a class="brand" href="./">ProtoLand</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1 style="margin:0;font-size:24px;">Projects</h1>
+      <p style="margin:6px 0 0;">A minimal gallery of prototypes.</p>
+    </section>
+
+    <section class="grid" id="projects-grid" aria-label="Project grid"></section>
+  </main>
+
+  <script src="./projects.js"></script>
+  <script>
+    (function () {
+      const projects = (window.PROJECTS || []).filter(Boolean);
+      const grid = document.getElementById('projects-grid');
+      if (!grid) return;
+
+      if (!Array.isArray(projects) || projects.length === 0) {
+        const empty = document.createElement('div');
+        empty.style.padding = '12px 0 6px';
+        empty.style.color = 'rgba(92, 61, 46, 0.7)';
+        empty.innerHTML = 'No projects yet. Duplicate the <code>_template</code> folder, rename it (e.g. <code>/my-project</code>), then add it to <code>projects.js</code>.';
+        grid.parentElement.insertBefore(empty, grid);
+        return;
+      }
+
+      const createCard = (project) => {
+        const anchor = document.createElement('a');
+        anchor.className = 'card';
+        anchor.href = `./${project.slug}/index.html`;
+
+        const badge = document.createElement('span');
+        badge.className = 'badge';
+        badge.textContent = (project.tags && project.tags[0]) || 'Project';
+
+        const title = document.createElement('h3');
+        title.textContent = project.title || project.slug;
+
+        const desc = document.createElement('p');
+        desc.textContent = project.description || '';
+
+        anchor.appendChild(badge);
+        anchor.appendChild(title);
+        anchor.appendChild(desc);
+        return anchor;
+      };
+
+      projects.forEach(p => grid.appendChild(createCard(p)));
+    })();
+  </script>
+  <footer>
+    © 2025 ProtoLand
+  </footer>
+</body>
+</html>
+
+
