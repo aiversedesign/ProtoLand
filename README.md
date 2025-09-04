@@ -7,7 +7,14 @@ A minimal static playground for small projects. Each project lives in its own fo
 - **Template**: Duplicate `_template/` to start a new project.
 - **Project data**: Edit `{slug}/data.js` to set `window.PROJECT_DATA` (add any fields you need). The template page reads and renders these values.
 
-### Quick start
+### Example prompt (to use with an AI editor)
+```
+create a new project called piano.
+
+create an app that showcases a piano which i can play with the keys of my keyboard.
+```
+
+### Quick start (without AI)
 1) Duplicate the template and rename to your slug:
 ```bash
 cp -R _template piano
@@ -23,13 +30,8 @@ window.PROJECTS = [
 ```bash
 python3 -m http.server 5173 -->
 <!-- # visit http://localhost:5173/ -->
-```
+<!-- ``` -->
 
-### Example prompt
-```
-create a new project called piano.
 
-create an app that showcases a piano which i can play with the keys of my keyboard.
-```
 
 
