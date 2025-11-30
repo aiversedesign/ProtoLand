@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Pattern Meta Cards</title>
+  <link rel="stylesheet" href="https://use.typekit.net/eoy0gzl.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">AI Pattern Meta Cards</h1>
+      <div class="global-download-buttons">
+        <select id="format-selector" class="format-dropdown">
+          <option value="png">PNG (Lossless)</option>
+          <option value="avif">AVIF (Smaller)</option>
+        </select>
+        <button class="download-btn primary" onclick="downloadFirstCard()">Download First Card</button>
+        <button class="download-btn primary" onclick="downloadAllCards()">Download All Cards</button>
+      </div>
+    </div>
+    
+    <div class="cards-grid" id="cards-grid">
+      <!-- Cards will be generated here by JavaScript -->
+        </div>
+      </div>
+
+  <script>
+    // Pattern data from CSV
+    const patternsData = [
+      {"pattern":"Audio output","thumbnails":["https://aiverse-next.b-cdn.net/bites/instagram-reels-language-translation-using-meta-ai/3YWPjhXKVb0VWCetvt7BJdo.png","https://aiverse-next.b-cdn.net/bites/jaws-audio-guide-for-clear-webcam-view/8jHwoWrP3BEBV8ngo9KfIEc9M.png","https://vz-5359d360-758.b-cdn.net/6c98a689-eff8-45d1-94fa-cf4e3f3bc46d/thumbnail_b84df2f1.jpg"]},
+      {"pattern":"Autocomplete","thumbnails":["https://vz-5359d360-758.b-cdn.net/bfc4a1c8-8e9b-4994-bb2b-9b76816df352/thumbnail.jpg","https://aiverse-next.b-cdn.net/bites/chatgpt-s-auto-suggest/HAELqm3qIpcTb6fMe22SFtz3BpM.png","https://vz-5359d360-758.b-cdn.net/e9455b1a-79a2-494b-b6f8-479e55d8199d/thumbnail_6cff287e.jpg"]},
+      {"pattern":"Branching","thumbnails":["https://aiverse-next.b-cdn.net/bites/subform-s-non-linear-conversation/IAn0g5pJLxNt26HKF9sWIJ3EWA.png"]},
+      {"pattern":"Citations","thumbnails":["https://vz-5359d360-758.b-cdn.net/a0c093ea-aaa6-4a77-8503-7ffe07f26f36/thumbnail_1422b030.jpg","https://aiverse-next.b-cdn.net/bites/granola-s-context-referencing/JeWpGjpsHnpOfJgRUimuVrAto.png","https://aiverse-next.b-cdn.net/bites/sana-ai-s-conversational-chat/qb4kzioV2cRDmBmS8rW7drIjSMo.png"]},
+      {"pattern":"Collecting feedback","thumbnails":["https://aiverse-next.b-cdn.net/bites/meter-generative-ui/V5xd0odL5la6Q6VvW5CcCrYyQ.png","https://vz-5359d360-758.b-cdn.net/87812d56-49d0-4eaa-8eb2-7aeef3ca0e57/thumbnail.jpg","https://aiverse-next.b-cdn.net/bites/figma-s-drag-to-create-content/O377iP2SozXabyQP6qfG7V6qUo.png"]},
+      {"pattern":"Disclaimer","thumbnails":["https://vz-5359d360-758.b-cdn.net/3aad6851-7ac9-496f-a6a2-65292f57ee71/thumbnail_3f55ed28.jpg","https://aiverse-next.b-cdn.net/bites/trivago-s-ai-search/e1FLARdlA9XjQrfjEWbbKdLkhAk.png","https://aiverse-next.b-cdn.net/bites/adplist-ai-search/Rs4jvLh528aOWPisVkbAQMiPVc4.png"]},
+      {"pattern":"Gesture input","thumbnails":["https://aiverse-next.b-cdn.net/bites/samsung-s-circle-to-search/ABJdierFbz1TqE3j0pmyxvjIs.png","https://aiverse-next.b-cdn.net/bites/humane-ai-pin-s-hand-gestures/XsqNRAH2ZnyqhPPvMb5pl70tAxU.png","https://aiverse-next.b-cdn.net/bites/humane-ai-pin/zPM2PPU9gh237wIlR2frA5mAnik.png"]},
+      {"pattern":"Handwriting input","thumbnails":["https://aiverse-next.b-cdn.net/bites/goodnotes-text-predict/H8pnEqYuOUyoJvTzuI9Dq8DGU.png"]},
+      {"pattern":"Icons","thumbnails":["https://vz-5359d360-758.b-cdn.net/b2d43a35-96cb-4af9-ab1d-de302ad81619/thumbnail_36146ea3.jpg","https://aiverse-next.b-cdn.net/bites/zed-dev-granular-code-editing/NBPADOJk7xHgUzYqLbz9kWXQBhM.png","https://aiverse-next.b-cdn.net/bites/github-animated-character/WyHLCGXW4nWhur19HLma7evAQU.png"]},
+      {"pattern":"Image output","thumbnails":["https://vz-5359d360-758.b-cdn.net/ae3b9dbe-6c75-4f11-9380-5421069d12ff/thumbnail_02d14b4b.jpg","https://aiverse-next.b-cdn.net/bites/cove-s-image-creation/nE2fl1MdnkITID3KYNvnH3N9D0.png","https://aiverse-next.b-cdn.net/bites/playground-s-image-generation/9dF8cNVBpDlD5J7SQZyv6e6zmY.png"]},
+      {"pattern":"Inline actions","thumbnails":["https://vz-5359d360-758.b-cdn.net/478105c6-4b9e-4d16-ab8c-3d08419e5f83/thumbnail_b682ed17.jpg","https://aiverse-next.b-cdn.net/bites/zed-dev-granular-code-editing/NBPADOJk7xHgUzYqLbz9kWXQBhM.png","https://aiverse-next.b-cdn.net/bites/figma-s-drag-to-create-content/O377iP2SozXabyQP6qfG7V6qUo.png"]},
+      {"pattern":"Knowledge bases & Integration","thumbnails":["https://vz-5359d360-758.b-cdn.net/dfa3049c-6831-46cd-91c5-f9e782baf053/thumbnail_eb4e2972.jpg","https://aiverse-next.b-cdn.net/bites/sana-ai-s-conversational-chat/qb4kzioV2cRDmBmS8rW7drIjSMo.png","https://aiverse-next.b-cdn.net/bites/meter-generative-ui/V5xd0odL5la6Q6VvW5CcCrYyQ.png"]},
+      {"pattern":"Managing memory","thumbnails":["https://vz-5359d360-758.b-cdn.net/dfeb6bbc-d0c9-4eb3-ac15-d52ad2824a6d/thumbnail_ed6a15fb.jpg"]},
+      {"pattern":"MCP connectors","thumbnails":["https://vz-5359d360-758.b-cdn.net/fa688f8c-86e6-474b-8b55-92107fb6eba0/thumbnail.jpg"]},
+      {"pattern":"Model selection","thumbnails":["https://vz-5359d360-758.b-cdn.net/918e0f00-567d-4da1-a975-7725edc04223/thumbnail.jpg","https://vz-5359d360-758.b-cdn.net/a6572738-7e6c-4c2e-be89-2a38f4b6e6ee/thumbnail_b25dce48.jpg","https://vz-5359d360-758.b-cdn.net/66389dad-a2a5-451e-9aac-bf3b62ce61ae/thumbnail.jpg"]},
+      {"pattern":"Multimodal output","thumbnails":["https://vz-5359d360-758.b-cdn.net/4f0f50f8-a7cd-4cc0-b629-9bddf628f2e9/thumbnail.jpg"]},
+      {"pattern":"Open input","thumbnails":["https://vz-5359d360-758.b-cdn.net/84589512-6c46-485f-b219-87b9f5098c70/thumbnail.jpg","https://vz-5359d360-758.b-cdn.net/aef3432f-6a5f-4ebd-bddc-67d7e254c6ec/thumbnail_e4b74b4a.jpg","https://aiverse-next.b-cdn.net/bites/raycast-new-chat/46eY7UqqLpKVlLllQOIuGAXFyU.png"]},
+      {"pattern":"Parallel processing","thumbnails":["https://vz-5359d360-758.b-cdn.net/5810375d-0de2-4450-a176-12f09fe1f81d/thumbnail.jpg","https://aiverse-next.b-cdn.net/bites/conductor-s-overseeing-multiple-agents/eRs2k13CkPm7gFkNkNfFgh44uiA.png","https://aiverse-next.b-cdn.net/bites/answergrid-s-bulk-research/xZw0pNQWETo3NAdS4iz7BumDAII.png"]},
+      {"pattern":"Personalization","thumbnails":["https://aiverse-next.b-cdn.net/bites/zed-dev-smart-context-commands/Usglbft8Tn8NypsoKbHv3g4.png","https://aiverse-next.b-cdn.net/bites/zed-dev-resuable-prompt-library/2eaogommRl1k4tur3OCijcUcsrg.png","https://aiverse-next.b-cdn.net/bites/clay-s-reusable-ai-actions-library/NQBa3wqiUV9SoIUqT0q9FQoFPM.png"]},
+      {"pattern":"Preview output","thumbnails":["https://vz-5359d360-758.b-cdn.net/1a2a2ed5-c135-461f-912e-db9e451f4cc9/thumbnail.jpg","https://aiverse-next.b-cdn.net/bites/clay-s-ai-effective-testing-while-saving-credits/DPscalFelBrY80gS61JFo5MA.png","https://aiverse-next.b-cdn.net/bites/zed-dev-granular-code-editing/NBPADOJk7xHgUzYqLbz9kWXQBhM.png"]},
+      {"pattern":"Proactive suggestions","thumbnails":["https://aiverse-next.b-cdn.net/bites/zed-dev-assistive-next-edit-prediction/hUrtsiN50BmXUgWrj3Chu4vGQ5M.png","https://aiverse-next.b-cdn.net/bites/polymet-s-ai-design-suggestions/atdf7HmdbIGOZVmUdW2ZGQ9qsA.png","https://aiverse-next.b-cdn.net/bites/salesforce-proactice-agent/T7nyHdJrpRL2j3cpcIDLa1nZ1RM.png"]},
+      {"pattern":"Processing steps","thumbnails":["https://vz-5359d360-758.b-cdn.net/0255598b-7bc7-4a38-9b17-e89422ce3fef/thumbnail_90467b25.jpg","https://vz-5359d360-758.b-cdn.net/54b8ab14-8a0f-4b47-a679-d6702ca48fd5/thumbnail_72d39110.jpg","https://vz-5359d360-758.b-cdn.net/5dbe72b7-3072-4ecf-93ee-916349aef15f/thumbnail.jpg"]},
+      {"pattern":"Prompt assistance","thumbnails":["https://vz-5359d360-758.b-cdn.net/bfc4a1c8-8e9b-4994-bb2b-9b76816df352/thumbnail.jpg","https://vz-5359d360-758.b-cdn.net/89840a6b-bfdb-4188-acc1-3adfafb13730/thumbnail_5b704234.jpg","https://vz-5359d360-758.b-cdn.net/a7c9eb4a-789e-4c81-bc0d-58c0a8e5382d/thumbnail_de5da0f1.jpg"]},
+      {"pattern":"Prompt management","thumbnails":["https://aiverse-next.b-cdn.net/bites/clay-s-reusable-ai-actions-library/NQBa3wqiUV9SoIUqT0q9FQoFPM.png","https://aiverse-next.b-cdn.net/bites/zed-dev-smart-context-commands/Usglbft8Tn8NypsoKbHv3g4.png","https://aiverse-next.b-cdn.net/bites/zed-dev-resuable-prompt-library/2eaogommRl1k4tur3OCijcUcsrg.png"]},
+      {"pattern":"Real-time","thumbnails":["https://vz-5359d360-758.b-cdn.net/47b5a1c9-a703-451e-ae0f-c94dca19c04c/thumbnail_ef7f3234.jpg","https://aiverse-next.b-cdn.net/bites/image-generation-by-remixing/TwV3JJwyKTEvLANE7aOcFM4xK6Q.png","https://aiverse-next.b-cdn.net/bites/krea-ai-s-realtime-image-generation/39g8pc5cozcplAnQ4MJbAHfZek.png"]},
+      {"pattern":"Regenerate","thumbnails":["https://vz-5359d360-758.b-cdn.net/80398343-ff37-4e30-a677-57d256728d60/thumbnail.jpg","https://aiverse-next.b-cdn.net/bites/figma-s-drag-to-create-content/O377iP2SozXabyQP6qfG7V6qUo.png","https://aiverse-next.b-cdn.net/bites/visual-electric-s-text-to-image-creation/XbXmIctWYS5p5HPnA6mddQWMM.png"]},
+      {"pattern":"Reply","thumbnails":["https://aiverse-next.b-cdn.net/bites/salesforce-lightning-canvas-editing-widgets/ifi57baWaMmcZyxy8azxVHpeoE.png","https://vz-5359d360-758.b-cdn.net/a52e25a0-4ec0-4be3-aa54-dbd0a5e72bbe/thumbnail_a8a32c19.jpg"]},
+      {"pattern":"Review","thumbnails":["https://aiverse-next.b-cdn.net/bites/apple-s-writing-assistance/uqAnsMx57HxZTP5Vc1xdAYJdpAE.png","https://vz-5359d360-758.b-cdn.net/d33219e8-4528-45a8-abcb-eed201e042ee/thumbnail.jpg","https://aiverse-next.b-cdn.net/bites/microsoft-powerpoint-text/IITFo36Gbkf03HektIT67YamD4o.jpg"]},
+      {"pattern":"Searching & filtering","thumbnails":["https://vz-5359d360-758.b-cdn.net/ba88af58-6fca-4fb6-9fdd-3743f6801675/thumbnail_6eb6c589.jpg","https://aiverse-next.b-cdn.net/bites/vercel-s-universal-ai-search/4N2nhaJLiPK0p5YEMnFpGdGfqaI.png","https://aiverse-next.b-cdn.net/bites/adplist-ai-search/Rs4jvLh528aOWPisVkbAQMiPVc4.png"]},
+      {"pattern":"Streaming","thumbnails":["https://vz-5359d360-758.b-cdn.net/d8f86870-dfbd-436a-8eb4-06126ec1a36e/thumbnail_d197abe8.jpg","https://vz-5359d360-758.b-cdn.net/a6572738-7e6c-4c2e-be89-2a38f4b6e6ee/thumbnail_b25dce48.jpg","https://aiverse-next.b-cdn.net/bites/cove-s-next-action-suggestion/eyNFQVHQjiQmNETcvIgj63IUE.png"]},
+      {"pattern":"Structured input","thumbnails":["https://vz-5359d360-758.b-cdn.net/530df35a-847f-457f-a458-4baa7ec6472f/thumbnail_bb12c818.jpg","https://vz-5359d360-758.b-cdn.net/a0d6f6c0-6d70-4a9b-86db-b0cb6537920f/thumbnail_cd010f73.jpg","https://aiverse-next.b-cdn.net/bites/ai-action-prompt-from-a-structured-form/R8lWEfPnyoIphWFH8H6XhkrxUc.png"]},
+      {"pattern":"Structured output","thumbnails":["https://vz-5359d360-758.b-cdn.net/c84e19cd-11f0-49f9-94fe-2fa07ac91063/thumbnail_500fcec2.jpg","https://vz-5359d360-758.b-cdn.net/dab0e2e1-beb6-4833-bdce-eaee1b088660/thumbnail_9bbf4de7.jpg","https://vz-5359d360-758.b-cdn.net/0cf03bae-401b-42e2-a93f-a64090f9d552/thumbnail_5a1bd9c0.jpg"]},
+      {"pattern":"Suggested prompts","thumbnails":["https://vz-5359d360-758.b-cdn.net/81dc9461-52d7-4e13-a438-5e96b8ded2d6/thumbnail_f5da0259.jpg","https://vz-5359d360-758.b-cdn.net/7489ef9a-e30c-4f75-a15c-85037864ecb7/thumbnail_b20280de.jpg","https://vz-5359d360-758.b-cdn.net/5e04f6d8-4ecf-44db-8dd1-cdc1310f4c7c/thumbnail_081e9bc4.jpg"]},
+      {"pattern":"Summary","thumbnails":["https://vz-5359d360-758.b-cdn.net/46500304-cb0b-4482-a893-24e4debdd3b0/thumbnail.jpg","https://vz-5359d360-758.b-cdn.net/32e0f17c-5e5e-45e9-ae74-e1f4529155b2/thumbnail.jpg","https://aiverse-next.b-cdn.net/bites/adplist-ai-summary/QCtc397yCsmpMYTWLAJGYo1qh8Y.png"]},
+      {"pattern":"Variations","thumbnails":["https://vz-5359d360-758.b-cdn.net/fb1f3c5c-4f08-4d9e-b180-f28ad57b511b/thumbnail_2c6574ee.jpg","https://vz-5359d360-758.b-cdn.net/80398343-ff37-4e30-a677-57d256728d60/thumbnail.jpg","https://aiverse-next.b-cdn.net/bites/grok-s-image-generation/27rFTqMzjZPSsBqpCwk4ADpLf4.png"]},
+      {"pattern":"Video output","thumbnails":["https://vz-5359d360-758.b-cdn.net/e850eea4-bceb-4552-9d32-5694e3935908/thumbnail_0d1acc1e.jpg","https://vz-5359d360-758.b-cdn.net/d9a4a39d-ceae-4c5f-af8e-3ea1f49eff36/thumbnail_e73882d3.jpg"]},
+      {"pattern":"Visual editing","thumbnails":["https://vz-5359d360-758.b-cdn.net/aa9eb96f-65a1-45b8-b5c5-497d2c95de51/thumbnail_b4829a45.jpg","https://vz-5359d360-758.b-cdn.net/1641d74a-1f99-45b0-820f-10ca220cdbe2/thumbnail_34ad97ba.jpg","https://vz-5359d360-758.b-cdn.net/6b794deb-5610-43bf-a63a-a8d7aff34755/thumbnail_8c5804fc.jpg"]},
+      {"pattern":"Visual input","thumbnails":["https://vz-5359d360-758.b-cdn.net/41f682e0-f60c-4848-be8a-67202104535c/thumbnail_3e1843c6.jpg","https://aiverse-next.b-cdn.net/bites/flora-image-to-image-creation/yaF9sZw9YWkDk3mUptroRkoGRc.png","https://aiverse-next.b-cdn.net/bites/flora-image-variant-matrix-generator/MDI55BFWIC2jBM1HhSkOCGBMTZo.png"]},
+      {"pattern":"Voice input","thumbnails":["https://vz-5359d360-758.b-cdn.net/41f682e0-f60c-4848-be8a-67202104535c/thumbnail_3e1843c6.jpg","https://aiverse-next.b-cdn.net/bites/cove-s-voice-as-an-input/nE2fl1MdnkITID3KYNvnH3N9D0.png","https://vz-5359d360-758.b-cdn.net/47b5a1c9-a703-451e-ae0f-c94dca19c04c/thumbnail_ef7f3234.jpg"]},
+      {"pattern":"Workflow builder","thumbnails":["https://aiverse-next.b-cdn.net/bites/clay-ai-waterfall-workflow-of-multiple-agent/RneegqFq4yMJtdJDk3h4vSjsQQM.png","https://aiverse-next.b-cdn.net/bites/tldraw-computer-infinite-canvas/mOX3pdEmHMpqyi2wNX36GzGtdgU.png"]}
+    ];
+
+    // Generate cards on page load
+    function generateCards() {
+      const grid = document.getElementById('cards-grid');
+      
+      patternsData.forEach((item, index) => {
+        const cardId = `card-${index}`;
+        const patternName = item.pattern;
+        const thumbnails = item.thumbnails;
+        
+        // Ensure we have 3 thumbnails (fill with placeholders if needed)
+        while (thumbnails.length < 3) {
+          thumbnails.push('');
+        }
+        
+        const cardHTML = `
+          <div class="card-container">
+            <div class="meta-card twitter-card" id="${cardId}" data-pattern="${patternName}">
+        <!-- Left Side Content -->
+        <div class="left-content">
+                <h2 class="main-title">${patternName}</h2>
+          <p class="main-subtitle">w/ 200+ real-world examples</p>
+          
+          <!-- Character Image -->
+          <div class="character-image">
+                  <img src="https://aiverse-next.b-cdn.net/metadata/character.png" alt="Character illustration" crossorigin="anonymous">
+          </div>
+        </div>
+        
+        <!-- Right Side Content -->
+        <div class="right-content">
+          <!-- Pill Badge -->
+          <div class="badge-pill">AI patterns for design teams</div>
+          
+          <!-- Stacked Cards -->
+          <div class="stacked-cards">
+            <!-- Card 3 (back) -->
+            <div class="preview-card card-3">
+                    ${thumbnails[2] ? `<img src="${thumbnails[2]}" alt="Thumbnail 3" class="card-image" crossorigin="anonymous">` : '<div class="card-placeholder">No image</div>'}
+              <div class="play-button">
+                <svg viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Card 2 (middle) -->
+            <div class="preview-card card-2">
+                    ${thumbnails[1] ? `<img src="${thumbnails[1]}" alt="Thumbnail 2" class="card-image" crossorigin="anonymous">` : '<div class="card-placeholder">No image</div>'}
+              <div class="play-button">
+                <svg viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Card 1 (front) -->
+            <div class="preview-card card-1">
+                    ${thumbnails[0] ? `<img src="${thumbnails[0]}" alt="Thumbnail 1" class="card-image" crossorigin="anonymous">` : '<div class="card-placeholder">No image</div>'}
+              <div class="play-button">
+                <svg viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        `;
+        
+        grid.insertAdjacentHTML('beforeend', cardHTML);
+      });
+    }
+
+    // Download first card only
+    async function downloadFirstCard() {
+      const firstCard = document.getElementById('card-0');
+      if (firstCard) {
+        await downloadCard(firstCard, 'card-0');
+      }
+    }
+
+    // Download all cards
+    async function downloadAllCards() {
+      const allCards = document.querySelectorAll('.meta-card');
+      const button = event.target;
+      const originalText = button.textContent;
+      
+      button.disabled = true;
+      
+      for (let i = 0; i < allCards.length; i++) {
+        button.textContent = `Downloading ${i + 1}/${allCards.length}...`;
+        await downloadCard(allCards[i], `card-${i}`);
+        await new Promise(resolve => setTimeout(resolve, 500)); // Small delay between downloads
+      }
+      
+      button.textContent = originalText;
+      button.disabled = false;
+      alert(`Successfully downloaded ${allCards.length} cards!`);
+    }
+
+    // Download individual card
+    async function downloadCard(card, cardId) {
+      if (!card) {
+        alert('Card not found!');
+        return;
+      }
+      
+      try {
+        console.log('Starting capture of', cardId);
+        
+        // Wait for images and fonts to load
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Use full card dimensions (not scaled)
+        const targetWidth = 1200;
+        const targetHeight = 628;
+        const padding = 250; // Extra space for shadows and overflow
+        const scale = 2;
+        
+        // Create off-screen wrapper to capture full card with overflow
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'absolute';
+        wrapper.style.left = '-9999px';
+        wrapper.style.top = '0';
+        wrapper.style.width = (targetWidth + padding * 2) + 'px';
+        wrapper.style.height = (targetHeight + padding * 2) + 'px';
+        wrapper.style.padding = padding + 'px';
+        wrapper.style.background = '#FBF5F1';
+        wrapper.style.overflow = 'visible';
+        wrapper.style.boxSizing = 'border-box';
+        
+        // Clone the card to avoid modifying original
+        const cardClone = card.cloneNode(true);
+        cardClone.id = cardId + '-clone';
+        cardClone.style.position = 'relative';
+        cardClone.style.left = '0';
+        cardClone.style.top = '0';
+        cardClone.style.margin = '0';
+        cardClone.style.marginBottom = '0';
+        cardClone.style.marginRight = '0';
+        cardClone.style.overflow = 'visible';
+        cardClone.style.transform = 'none'; // Remove the 0.2 scale
+        cardClone.style.transformOrigin = 'center';
+        cardClone.style.width = targetWidth + 'px';
+        cardClone.style.height = targetHeight + 'px';
+        
+        // Set overflow visible on nested elements
+        const stackedCards = cardClone.querySelectorAll('.stacked-cards');
+        const previewCards = cardClone.querySelectorAll('.preview-card');
+        stackedCards.forEach(el => el.style.overflow = 'visible');
+        previewCards.forEach(el => el.style.overflow = 'visible');
+        
+        // Fix image rendering - show full images without cropping
+        const cardImages = cardClone.querySelectorAll('.card-image');
+        cardImages.forEach(img => {
+          img.style.objectFit = 'contain'; // Show full image without cropping
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.imageRendering = 'high-quality';
+          img.style.imageRendering = '-webkit-optimize-contrast';
+        });
+        
+        wrapper.appendChild(cardClone);
+        document.body.appendChild(wrapper);
+        
+        // Wait for images to load
+        const allImages = wrapper.querySelectorAll('img');
+        await Promise.all(
+          Array.from(allImages).map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise((resolve) => {
+              img.onload = resolve;
+              img.onerror = resolve;
+              setTimeout(resolve, 2000); // Timeout after 2s
+            });
+          })
+        );
+        
+        // Wait for layout and fonts
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Capture wrapper
+        const fullCanvas = await html2canvas(wrapper, {
+          scale: scale,
+          useCORS: true,
+          allowTaint: false,
+          backgroundColor: '#FBF5F1',
+          logging: false,
+          width: wrapper.offsetWidth,
+          height: wrapper.offsetHeight,
+          imageTimeout: 0,
+          removeContainer: true
+        });
+        
+        // Clean up wrapper
+        document.body.removeChild(wrapper);
+        
+        // Crop to exact card dimensions
+        const cropX = padding * scale;
+        const cropY = padding * scale;
+        const cropWidth = targetWidth * scale;
+        const cropHeight = targetHeight * scale;
+        
+        // Create final canvas at exact dimensions (no shadow/padding)
+        const canvas = document.createElement('canvas');
+        canvas.width = cropWidth;
+        canvas.height = cropHeight;
+        const ctx = canvas.getContext('2d');
+        
+        // Draw the card image at exact dimensions
+        ctx.drawImage(fullCanvas, cropX, cropY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
+        
+        console.log('Canvas created:', canvas.width, 'x', canvas.height);
+        
+        // Get selected format
+        const formatSelector = document.getElementById('format-selector');
+        const format = formatSelector ? formatSelector.value : 'png';
+        
+        // Convert to blob with selected format
+        const blob = await new Promise((resolve) => {
+          if (format === 'avif') {
+            // Try to use AVIF format (not all browsers support it)
+            canvas.toBlob(resolve, 'image/avif', 0.85);
+          } else {
+            canvas.toBlob(resolve, 'image/png', 1.0);
+          }
+        });
+        
+        if (!blob) {
+          throw new Error('Failed to generate image blob');
+        }
+        
+        // Get pattern name for filename
+        const patternName = card.getAttribute('data-pattern') || cardId;
+        const filename = patternName.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+        
+        // Create download link with blob URL
+        const blobUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `${filename}.${format}`;
+        link.href = blobUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Clean up blob URL
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
+        
+        console.log('Download triggered successfully');
+        
+      } catch (error) {
+        console.error('Download error:', error);
+        const errorMsg = error && error.message ? error.message : 'Unknown error occurred';
+        alert('Error generating image: ' + errorMsg + '\n\nPlease try again or check console for details.');
+      }
+    }
+
+    // Generate cards on page load
+    window.addEventListener('DOMContentLoaded', generateCards);
+  </script>
+</body>
+</html>

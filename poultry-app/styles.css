@@ -1,0 +1,1423 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.phones-wrapper {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.mobile-container {
+    width: 436px;
+    height: 780px;
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Status Bar */
+.status-bar {
+    background: #0D8AEE;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-icons {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.signal {
+    font-size: 10px;
+}
+
+/* Header */
+.header {
+    background: #0D8AEE;
+    color: white;
+    padding: 15px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    background: #4DA3F5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.profile-avatar::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 12px;
+}
+
+.profile-avatar::after {
+    content: '';
+    width: 28px;
+    height: 15px;
+    background: white;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: 5px;
+}
+
+.welcome-text h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.welcome-text p {
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.95;
+}
+
+.header-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+}
+
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: #F5F5F5;
+}
+
+/* Price Section */
+.price-section {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.section-title h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #0D8AEE;
+    font-size: 14px;
+}
+
+.location svg {
+    fill: #0D8AEE;
+}
+
+.view-all {
+    color: #00C6FF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.price-cards {
+    display: flex;
+    gap: 12px;
+}
+
+.price-card {
+    background: #F0FFF0;
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 140px;
+}
+
+.price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-name {
+    font-size: 14px;
+    color: #333;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.price-indicator {
+    font-size: 20px;
+    color: #4CAF50;
+}
+
+/* Banner Card */
+.banner-card {
+    background: #5A7A3A;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-content {
+    flex: 1;
+    z-index: 2;
+}
+
+.banner-content h3 {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.banner-tag {
+    background: white;
+    color: #5A7A3A;
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.banner-subtitle {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.banner-image {
+    width: 140px;
+    height: 140px;
+    background: #cccccc;
+    border-radius: 8px;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+/* Calculator Button */
+.calculator-btn {
+    width: 100%;
+    background: #00C6FF;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.calculator-btn svg:first-child {
+    flex-shrink: 0;
+}
+
+.calculator-btn span {
+    flex: 1;
+    text-align: left;
+}
+
+.calculator-btn .arrow {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+/* Coming Soon Section */
+.coming-soon {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.coming-soon h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #00C6FF;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.coming-soon p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.phone-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #0D8AEE;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.phone-number svg {
+    fill: #0D8AEE;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0 12px;
+    position: relative;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #999;
+}
+
+.nav-item.active {
+    color: #0D8AEE;
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.nav-item span {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* Scrollbar */
+.main-content::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+
+.main-content {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* =====================================
+   MINIMAL FARM DASHBOARD (Phone 2)
+   ===================================== */
+
+.farm-dashboard {
+    background: #F0F0F0;
+}
+
+/* Top Header Bar */
+.top-header-bar {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4DA3F5; /* Brand blue for the avatar icon */
+    background: #E3F2FD; /* Light blue bg */
+    cursor: pointer;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2C2C2C;
+    cursor: pointer;
+    /* box-shadow: 0 2px 8px rgba(0,0,0,0.05); */
+}
+
+.nav-icon-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Main Content */
+.farm-main {
+    background: #F0F0F0;
+    padding: 0 0 120px 0;
+}
+
+/* Swipeable Farm Card */
+.farm-card-swipeable {
+    padding: 0 20px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    position: relative;
+}
+
+.farm-cards-container {
+    display: flex;
+    transition: transform 0.3s ease-out;
+    cursor: grab;
+    width: 100%;
+}
+
+.farm-cards-container:active {
+    cursor: grabbing;
+}
+
+.farm-card-simple {
+    min-width: 100%;
+    /* background: white; */
+    border-radius: 16px;
+    padding: 12px 10px;
+    text-align: center;
+    position: relative;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.farm-icon-placeholder {
+    width: 100px;
+    height: 100px;
+    /* background: #E8E8E8; */
+    border-radius: 12px;
+    margin: 0 auto 12px;
+}
+
+.farm-text-center {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.farm-label-small {
+    font-size: 12px;
+    font-weight: 500;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.farm-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2C2C2C;
+}
+
+.farm-nav-arrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: #E8E8E8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.farm-nav-arrow.left-arrow {
+    right: auto;
+    left: 16px;
+}
+
+/* Add Farm Card */
+.farm-card-add {
+    background: #F5F5F5;
+    border: 2px dashed #CCC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.add-farm-icon {
+    width: 48px;
+    height: 48px;
+    background: #E0E0E0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.add-farm-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #666;
+}
+
+.farm-nav-arrow svg {
+    fill: #666;
+}
+
+/* Farm Dots */
+.farm-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.farm-dots .dot {
+    width: 6px;
+    height: 6px;
+    background: #C8C8C8;
+    border-radius: 50%;
+}
+
+.farm-dots .dot.active {
+    background: #666;
+    width: 20px;
+    border-radius: 3px;
+}
+
+/* Action Pills Row */
+.action-pills-row {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+    margin-bottom: 24px;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.action-icon {
+    width: 48px;
+    height: 48px;
+    background: #E0E0E0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2C2C2C;
+    transition: background 0.2s;
+}
+
+.action-btn:active .action-icon {
+    background: #D0D0D0;
+}
+
+.action-btn span {
+    font-size: 12px;
+    font-weight: 500;
+    color: #2C2C2C;
+    text-align: center;
+}
+
+/* White Cards */
+.white-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 0 20px 16px;
+}
+
+.white-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2C2C2C;
+    margin-bottom: 6px;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 16px;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 4px; /* Allow space for potential scrollbar if needed, though hidden */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.filter-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tab-btn.active {
+    background: #2C2C2C;
+    color: white;
+}
+
+.tab-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+/* Price Items List */
+.price-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Increased vertical spacing */
+    margin-bottom: 20px;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.price-icon-box {
+    width: 48px;
+    height: 48px;
+    background: #F8F9FA;
+    border-radius: 50%; /* Round background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Removed specific color to allow SVG original colors */
+}
+
+.price-emoji {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.price-info-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.price-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2C2C2C;
+}
+
+.price-location {
+    font-size: 13px;
+    color: #999;
+}
+
+.placeholder-line {
+    height: 16px;
+    background: #E8E8E8;
+    border-radius: 4px;
+    width: 70%;
+}
+
+.placeholder-line.short {
+    width: 50%;
+    height: 14px;
+}
+
+.price-values-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.price-amount {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.price-amount.positive {
+    color: #4CAF50;
+}
+
+.price-change {
+    font-size: 12px;
+    color: #999;
+}
+
+/* Date Selector Scroll */
+.date-selector-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin: 0 -4px;
+    padding: 12px 4px 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.date-selector-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.date-card {
+    min-width: 64px;
+    height: 80px;
+    background: #F8F8F8;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.date-card.selected {
+    background: #E3F2FD;
+    border-color: #0D8AEE;
+}
+
+.date-card .day-name {
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.date-card.selected .day-name {
+    color: #0D8AEE;
+}
+
+.date-card .day-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2C2C2C;
+}
+
+.date-card.selected .day-number {
+    color: #0D8AEE;
+}
+
+.date-card .month-name {
+    font-size: 10px;
+    color: #999;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: -2px;
+}
+
+.date-card.selected .month-name {
+    color: #0D8AEE;
+}
+
+.date-card .today-label {
+    position: absolute;
+    top: -8px;
+    background: #2C2C2C;
+    color: white;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Card Header Row */
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.add-link {
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Flocks Grid */
+.flocks-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.flock-card-box {
+    min-height: 80px;
+    background: #F8F8F8;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.flock-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.flock-info-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.flock-info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.flock-card-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2C2C2C;
+}
+
+.flock-card-type {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 0;
+}
+
+.flock-card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 0;
+}
+
+.flock-card-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2C2C2C;
+}
+
+.flock-card-age {
+    font-size: 12px;
+    color: #999;
+}
+
+.flock-card-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #E8F5E9;
+    color: #4CAF50;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+    /* align-self: flex-start; Removed to allow flex centering in right column */
+}
+
+.flock-card-badge.blue {
+    background: #E3F2FD;
+    color: #1976D2;
+}
+
+.flock-card-badge.green {
+    background: #E8F5E9;
+    color: #4CAF50;
+}
+
+.flock-details-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot-separator {
+    font-size: 10px;
+    color: #999;
+}
+
+.flock-card-number-small {
+    font-size: 13px;
+    color: #666;
+    font-weight: 400;
+}
+
+/* Tools Scroll Container */
+.tools-scroll-container {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin: 20px 0px 0px -4px; /* Compensate for scrollbar padding if needed */
+    padding: 0 4px 10px;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.tools-scroll-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari/Opera */
+}
+
+.tool-card {
+    min-width: 140px;
+    width: 140px;
+    height: 160px;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.tool-card:active {
+    transform: scale(0.98);
+}
+
+.tool-card-text {
+    z-index: 2;
+}
+
+.tool-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C2C2C;
+    line-height: 1.4;
+    display: block;
+}
+
+.tool-card-graphic {
+    width: 80px;
+    height: 80px;
+    align-self: center;
+    position: relative;
+    margin-top: auto;
+}
+
+.tool-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Card Gradients */
+.card-fcr {
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+}
+
+.card-feed {
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+}
+
+.card-cost {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+}
+
+/* Text Button */
+.text-btn {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #2C2C2C;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Card Actions Row */
+.card-actions-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Secondary Button */
+.secondary-btn {
+    flex: 1;
+    background: #f6f6f6;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #2C2C2C;
+    cursor: pointer;
+}
+
+/* Primary Alternative Button */
+.primary-btn-alt {
+    flex: 1;
+    background: #10B981;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.primary-btn-alt:disabled {
+    background: #E0E0E0;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.primary-btn-alt:disabled svg {
+    fill: #999;
+}
+
+/* Floating Button */
+.floating-btn-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to top, #F0F0F0 50%, transparent);
+}
+
+.cta-btn-blue {
+    width: 60%;
+    background: #0D8AEE;
+    color: white;
+    border: none;
+    border-radius: 28px;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(13, 138, 238, 0.3);
+}
+
+.cta-btn-blue svg {
+    fill: white;
+}
+
+/* =====================================
+   PHONE 3: PROFESSIONAL REDESIGN
+   ===================================== */
+
+/* Static Farm Card (No Carousel) */
+.farm-card-static {
+    padding: 24px 20px;
+    margin: 0 20px 20px;
+    text-align: center;
+}
+
+/* Professional Daily Prices Card */
+.prices-card-pro {
+    /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); */
+}
+
+.filter-tabs-pro {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.filter-tabs-pro::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-btn-pro {
+    padding: 10px 16px;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tab-btn-pro.active {
+    background: #2C2C2C;
+    color: white;
+}
+
+.count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 3px;
+}
+
+.tab-btn-pro.active .count-badge {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+}
+
+/* Professional Price List */
+.price-items-list-pro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.price-row-pro {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: #FAFAFA;
+    border-radius: 8px;
+}
+
+.price-info-col-pro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.price-name-pro {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.price-location-pro {
+    font-size: 12px;
+    color: #888;
+}
+
+.price-type-pro {
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+}
+
+.price-values-col-pro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.price-amount-pro {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+}
+
+.price-amount-pro.positive {
+    color: #2E7D32;
+}
+
+.price-amount-pro.negative {
+    color: #C62828;
+}
+
+.price-change-pro {
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+}
+
+/* Professional Buttons */
+.secondary-btn-pro {
+    flex: 1;
+    background: #F5F5F5;
+    border: none;
+    padding: 14px 20px;
+    border-radius:100px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2C2C2C;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.secondary-btn-pro:hover {
+    background: #E8E8E8;
+}
+
+.primary-btn-pro {
+    flex: 1;
+    background: #10B981;
+    border: none;
+    padding: 14px 20px;
+    border-radius:100px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.primary-btn-pro:hover {
+    background: #059669;
+}
+
+.last-updated {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    margin-top: 12px;
+    padding-top: 12px;
+    /* border-top: 1px solid #F0F0F0; */
+}
+
+/* Professional Appointment Card */
+.appointment-card-pro {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    /* box-shadow: 0 4px 16px rgba(13, 138, 238, 0.15); */
+}
+
+.appointment-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.appointment-icon-large {
+    width: 56px;
+    height: 56px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0D8AEE;
+    flex-shrink: 0;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.appointment-text h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.appointment-text .card-subtitle {
+    margin-bottom: 0;
+    color: #555;
+}
+
+.appointment-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #2C2C2C;
+}
+
+.benefit-icon {
+    width: 20px;
+    height: 20px;
+    background: #10B981;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.cta-appointment-btn {
+    width: 100%;
+    background: #0D8AEE;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    /* box-shadow: 0 4px 12px rgba(13, 138, 238, 0.3); */
+    transition: all 0.2s;
+}
+
+.cta-appointment-btn:hover {
+    background: #0B7AD1;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(13, 138, 238, 0.4);
+}
+

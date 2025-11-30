@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twitter Drafts • ProtoLand</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./data.js"></script>
+</head>
+<body>
+  <div class="drafts-modal">
+    <div class="modal-header">
+      <button class="close-btn" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path d="M18.36 6.64a1 1 0 0 0-1.41 0L12 11.59 7.05 6.64a1 1 0 1 0-1.41 1.41L10.59 13l-4.95 4.95a1 1 0 0 0 1.41 1.41L12 14.41l4.95 4.95a1 1 0 0 0 1.41-1.41L13.41 13l4.95-4.95a1 1 0 0 0 0-1.41z" fill="currentColor"/>
+        </svg>
+      </button>
+      <h1 class="drafts-title">Drafts</h1>
+    </div>
+
+    <div class="draft-content">
+      <div class="draft-header">
+        <div class="profile-pic">
+          <img src="https://i.pravatar.cc/48?img=33" alt="Profile" />
+        </div>
+        <button class="audience-btn">
+          Everyone
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M12 15.5l-6-6h12z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="tweet-text">
+        <p>Whoever nails real-time voice stands to win the interface layer to AI.</p>
+        <p>Not screens. Not chat bubbles.</p>
+        <p>One of the startups doing great work in this area is <a href="#" class="mention">@Cartesia</a></p>
+        <p>Their Sonic-3 low latency models are already laughing, emoting, and switching languages live</p>
+      </div>
+
+      <div class="draft-footer">
+        <div class="reply-notice">
+          <svg viewBox="0 0 24 24" width="16" height="16">
+            <circle cx="12" cy="12" r="10" fill="currentColor"/>
+            <path d="M12 8v5l3 3" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span>Everyone can reply</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="compose-toolbar">
+      <div class="toolbar-left">
+        <button class="toolbar-btn" aria-label="Add media">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M3 5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H3zm0 12V7h18v10H3zm13.5-7L13 14.5 10 11l-3 4h14l-4.5-5z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="toolbar-btn" aria-label="Add GIF">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M3 5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H3zm5.5 9H7v-4h1.5v1.5h1V10h-3v4.5h3V13zm3 0h-1.5v-4H12c.8 0 1.5.7 1.5 1.5v1c0 .8-.7 1.5-1.5 1.5zm5.5-2.5h-1.5V13H17v1h-3v-4h3v1h-1.5v.5H17v1z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="toolbar-btn" aria-label="Create poll">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M4 4h4v16H4V4zm6 6h4v10h-4V10zm6-3h4v13h-4V7z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="toolbar-btn" aria-label="Add emoji">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9c.83 0 1.5-.67 1.5-1.5S7.83 8 7 8s-1.5.67-1.5 1.5S6.17 11 7 11zm10 0c.83 0 1.5-.67 1.5-1.5S17.83 8 17 8s-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-5 5c2.33 0 4.32-1.45 5.12-3.5h-1.67c-.69 1.19-1.97 2-3.45 2s-2.75-.81-3.45-2H6.88c.8 2.05 2.79 3.5 5.12 3.5z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="toolbar-btn" aria-label="Schedule">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M19 4h-1V3c0-.6-.4-1-1-1s-1 .4-1 1v1H8V3c0-.6-.4-1-1-1s-1 .4-1 1v1H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="toolbar-btn" aria-label="Add location">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="toolbar-btn toolbar-btn-text" aria-label="Bold">
+          <strong>B</strong>
+        </button>
+        <button class="toolbar-btn toolbar-btn-text" aria-label="Italic">
+          <em>I</em>
+        </button>
+      </div>
+      <div class="toolbar-right">
+        <div class="char-counter">
+          <svg class="progress-ring" width="36" height="36">
+            <circle cx="18" cy="18" r="15" stroke="#e7e9ea" stroke-width="2" fill="none"/>
+            <circle cx="18" cy="18" r="15" stroke="#1d9bf0" stroke-width="2" fill="none" 
+                    stroke-dasharray="94.2" stroke-dashoffset="80" 
+                    transform="rotate(-90 18 18)" stroke-linecap="round"/>
+          </svg>
+          <span class="char-count">20</span>
+        </div>
+        <button class="add-thread-btn" aria-label="Add to thread">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm1 13h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="post-btn">Post</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
