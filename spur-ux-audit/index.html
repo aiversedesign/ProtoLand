@@ -295,7 +295,23 @@
             <div class="mobile-mockup highlight" >
                 <div class="mobile-notch"></div>
                 <div class="mobile-screen">
-                    <video src="solution-rec.mov" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                    <video id="redesignVideo" src="solution-rec-new.mov" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                    <div class="video-controls">
+                        <button class="video-play-btn" id="videoPlayBtn">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="white" width="32" height="32">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <svg class="pause-icon" viewBox="0 0 24 24" fill="white" width="32" height="32" style="display: none;">
+                                <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="video-scrubber-external">
+                <div class="video-scrubber" id="videoScrubber">
+                    <div class="video-scrubber-progress" id="videoScrubberProgress"></div>
+                    <div class="video-scrubber-handle" id="videoScrubberHandle"></div>
                 </div>
             </div>
             <div class="avatar-section">
@@ -305,6 +321,23 @@
                 </div>
             </div>
         </div>
+
+        <div class="slide">
+            <div class="mobile-mockup">
+                <div class="mobile-notch"></div>
+                <div class="mobile-screen">
+                    <img src="solution-card-page.png">
+                </div>
+            </div>
+            <img style="width: 35%;" src="solution-cards.png">
+            <div class="avatar-section">
+                <div class="avatar">💪</div>
+                <div class="dialog-box">
+                    PRO: Everything is modular. You can add new cards like launches, announcements and survey questions.   
+                </div>
+            </div>
+        </div>
+
         <div class="slide">
             <div class="insight-overlay-scrim"></div>
             <div class="mobile-mockup zoom-top ">
@@ -331,20 +364,7 @@
                 </div>
             </div>
         </div>
-        <div class="slide">
-            <div class="mobile-mockup">
-                <div class="mobile-notch"></div>
-                <div class="mobile-screen">
-                    <img src="spur6.svg">
-                </div>
-            </div>
-            <div class="avatar-section">
-                <div class="avatar">💪</div>
-                <div class="dialog-box">
-                    Now, time to clean up rest of the dashboard!
-                </div>
-            </div>
-        </div>
+       
         <div class="slide">
             <div class="mobile-mockup zoom-bottom">
                 <div class="mobile-notch"></div>

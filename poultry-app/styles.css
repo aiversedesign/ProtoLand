@@ -401,6 +401,20 @@ body {
 
 .farm-dashboard {
     background: #F0F0F0;
+    position: relative;
+}
+
+.farm-dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 500px;
+    background: 
+        url('blue-bg.png') center top / cover no-repeat;
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* Top Header Bar */
@@ -409,6 +423,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.top-header-bar.bg-grey {
+    background-color: #F0F0F0;
 }
 
 .nav-profile-avatar {
@@ -432,7 +453,7 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: white;
+    background: rgba(255, 255, 255, 0.2);
     border: none;
     display: flex;
     align-items: center;
@@ -449,8 +470,10 @@ body {
 
 /* Main Content */
 .farm-main {
-    background: #F0F0F0;
+    background: transparent;
     padding: 0 0 120px 0;
+    position: relative;
+    z-index: 1;
 }
 
 /* Swipeable Farm Card */
@@ -500,7 +523,7 @@ body {
 .farm-label-small {
     font-size: 12px;
     font-weight: 500;
-    color: #999;
+    color: #ffffff50;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -508,7 +531,7 @@ body {
 .farm-title {
     font-size: 24px;
     font-weight: 600;
-    color: #2C2C2C;
+    color: #fff;
 }
 
 .farm-nav-arrow {
@@ -606,7 +629,7 @@ body {
 .action-icon {
     width: 48px;
     height: 48px;
-    background: #E0E0E0;
+    background: #ffffff35;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -621,8 +644,8 @@ body {
 
 .action-btn span {
     font-size: 12px;
-    font-weight: 500;
-    color: #2C2C2C;
+    font-weight: 400;
+    color: #fff;
     text-align: center;
 }
 
@@ -1114,6 +1137,7 @@ body {
     display: flex;
     justify-content: center;
     background: linear-gradient(to top, #F0F0F0 50%, transparent);
+    z-index: 100; /* Ensure it stays above all cards and content */
 }
 
 .cta-btn-blue {
@@ -1146,6 +1170,18 @@ body {
     padding: 24px 20px;
     margin: 0 20px 20px;
     text-align: center;
+}
+
+/* Lower Content Background (Grey overlay) */
+.farm-lower-content {
+    background: #F0F0F0;
+    padding-top: 20px;
+    /* Extend to bottom to ensure full coverage */
+    min-height: 500px; 
+    /* Ensure it sits above the fixed background */
+    position: relative;
+    z-index: 2;
+    border-radius: 24px 24px 0 0; /* Optional: smoother transition */
 }
 
 /* Professional Daily Prices Card */

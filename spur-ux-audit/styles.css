@@ -6,7 +6,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-    background: url('blue-bg.png') center center / cover no-repeat;
+    background: url('download.png') center center / cover no-repeat;
     min-height: 100vh;
     overflow: hidden;
 }
@@ -190,6 +190,111 @@ body {
     width: 100%;
     height: 100%;
     object-fit: fill;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-screen:hover .video-controls {
+    opacity: 1;
+}
+
+.video-play-btn {
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.video-play-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.video-play-btn:active {
+    transform: scale(0.95);
+}
+
+.video-play-btn svg {
+    pointer-events: none;
+}
+
+.video-scrubber-external {
+    position: absolute;
+    top: calc(50% + 410px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    z-index: 15;
+}
+
+.video-scrubber {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: height 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-scrubber:hover {
+    height: 8px;
+}
+
+.video-scrubber-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.8), rgba(255, 215, 0, 1));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.video-scrubber-handle {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background: gold;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    left: 0%;
+    transition: left 0.1s linear, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+}
+
+.video-scrubber:hover .video-scrubber-handle {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.video-scrubber-handle:active {
+    transform: translate(-50%, -50%) scale(1.3);
+    background: #ffd700;
 }
 
 .layout-overlay {
@@ -568,4 +673,3 @@ body {
         width: 280px;
     }
 }
-

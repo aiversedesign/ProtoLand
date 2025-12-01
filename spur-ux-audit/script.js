@@ -128,3 +128,104 @@ document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
 });
 
+// Video player controls
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('redesignVideo');
+    const playBtn = document.getElementById('videoPlayBtn');
+    const playIcon = playBtn.querySelector('.play-icon');
+    const pauseIcon = playBtn.querySelector('.pause-icon');
+    const scrubber = document.getElementById('videoScrubber');
+    const scrubberProgress = document.getElementById('videoScrubberProgress');
+    const scrubberHandle = document.getElementById('videoScrubberHandle');
+    
+    if (video && playBtn) {
+        let isDragging = false;
+        
+        // Update scrubber progress
+        const updateScrubber = () => {
+            if (!isDragging && video.duration) {
+                const progress = (video.currentTime / video.duration) * 100;
+                if (scrubberProgress) scrubberProgress.style.width = progress + '%';
+                if (scrubberHandle) scrubberHandle.style.left = progress + '%';
+            }
+        };
+        
+        // Update scrubber as video plays
+        video.addEventListener('timeupdate', updateScrubber);
+        
+        // Seek video on scrubber interaction
+        const seek = (e) => {
+            if (!scrubber) return;
+            const rect = scrubber.getBoundingClientRect();
+            const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+            if (video.duration) {
+                const seekTime = pos * video.duration;
+                video.currentTime = seekTime;
+                const progress = pos * 100;
+                if (scrubberProgress) scrubberProgress.style.width = progress + '%';
+                if (scrubberHandle) scrubberHandle.style.left = progress + '%';
+            }
+        };
+        
+        // Scrubber click
+        if (scrubber) {
+            scrubber.addEventListener('click', (e) => {
+                e.stopPropagation();
+                seek(e);
+            });
+            
+            // Scrubber drag
+            scrubber.addEventListener('mousedown', (e) => {
+                e.stopPropagation();
+                isDragging = true;
+                seek(e);
+            });
+        }
+        
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                seek(e);
+            }
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Toggle play/pause
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.paused) {
+                video.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                video.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        });
+        
+        // Update button state when video plays/pauses
+        video.addEventListener('play', () => {
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        });
+        
+        video.addEventListener('pause', () => {
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        });
+        
+        // Click on video to play/pause
+        video.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    }
+});
+
