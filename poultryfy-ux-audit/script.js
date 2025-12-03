@@ -6,7 +6,7 @@ const counterDots = document.querySelectorAll('.counter-dot');
 const progressBar = document.querySelector('.progress-bar');
 
 // Emotion levels for each slide (0-100, where 50 is neutral)
-const emotionLevels = [50, 50, 25, 75, 60, 60, 50, 50, 50, 50, 50, 40, 75, 75, 75, 75, 75, 70, 70, 60, 50, 75, 75, 75, 75, 65, 60, 45, 45, 55, 50, 50, 80, 80, 80, 75, 85, 85];
+const emotionLevels = [50, 50, 25, 25, 25, 20, 20, 20, 20, 25, 20, 15, 30, 25, 35, 35, 35, 30, 75, 75, 80, 80, 80, 75, 65, 65, 35, 35, 60, 70, 70, 60, 55, 45, 75, 60, 60, 70, 75, 75];
 
 function updateEmotionMeter(level, showDifference = true) {
     const emotionFillElement = document.getElementById('emotionFill');
@@ -128,59 +128,60 @@ document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
 });
 
-// Video player controls
-document.addEventListener('DOMContentLoaded', () => {
-    const video = document.getElementById('redesignVideo');
-    const playBtn = document.getElementById('videoPlayBtn');
+// Video player controls - Reusable function
+function setupVideoControls(videoId, playBtnId, scrubberId, scrubberProgressId, scrubberHandleId) {
+    const video = document.getElementById(videoId);
+    const playBtn = document.getElementById(playBtnId);
+    
+    if (!video || !playBtn) return;
+    
     const playIcon = playBtn.querySelector('.play-icon');
     const pauseIcon = playBtn.querySelector('.pause-icon');
-    const scrubber = document.getElementById('videoScrubber');
-    const scrubberProgress = document.getElementById('videoScrubberProgress');
-    const scrubberHandle = document.getElementById('videoScrubberHandle');
+    const scrubber = document.getElementById(scrubberId);
+    const scrubberProgress = document.getElementById(scrubberProgressId);
+    const scrubberHandle = document.getElementById(scrubberHandleId);
     
-    if (video && playBtn) {
-        let isDragging = false;
-        
-        // Update scrubber progress
-        const updateScrubber = () => {
-            if (!isDragging && video.duration) {
-                const progress = (video.currentTime / video.duration) * 100;
-                if (scrubberProgress) scrubberProgress.style.width = progress + '%';
-                if (scrubberHandle) scrubberHandle.style.left = progress + '%';
-            }
-        };
-        
-        // Update scrubber as video plays
-        video.addEventListener('timeupdate', updateScrubber);
-        
-        // Seek video on scrubber interaction
-        const seek = (e) => {
-            if (!scrubber) return;
-            const rect = scrubber.getBoundingClientRect();
-            const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-            if (video.duration) {
-                const seekTime = pos * video.duration;
-                video.currentTime = seekTime;
-                const progress = pos * 100;
-                if (scrubberProgress) scrubberProgress.style.width = progress + '%';
-                if (scrubberHandle) scrubberHandle.style.left = progress + '%';
-            }
-        };
-        
-        // Scrubber click
-        if (scrubber) {
-            scrubber.addEventListener('click', (e) => {
-                e.stopPropagation();
-                seek(e);
-            });
-            
-            // Scrubber drag
-            scrubber.addEventListener('mousedown', (e) => {
-                e.stopPropagation();
-                isDragging = true;
-                seek(e);
-            });
+    let isDragging = false;
+    
+    // Update scrubber progress
+    const updateScrubber = () => {
+        if (!isDragging && video.duration) {
+            const progress = (video.currentTime / video.duration) * 100;
+            if (scrubberProgress) scrubberProgress.style.width = progress + '%';
+            if (scrubberHandle) scrubberHandle.style.left = progress + '%';
         }
+    };
+    
+    // Update scrubber as video plays
+    video.addEventListener('timeupdate', updateScrubber);
+    
+    // Seek video on scrubber interaction
+    const seek = (e) => {
+        if (!scrubber) return;
+        const rect = scrubber.getBoundingClientRect();
+        const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        if (video.duration) {
+            const seekTime = pos * video.duration;
+            video.currentTime = seekTime;
+            const progress = pos * 100;
+            if (scrubberProgress) scrubberProgress.style.width = progress + '%';
+            if (scrubberHandle) scrubberHandle.style.left = progress + '%';
+        }
+    };
+    
+    // Scrubber click
+    if (scrubber) {
+        scrubber.addEventListener('click', (e) => {
+            e.stopPropagation();
+            seek(e);
+        });
+        
+        // Scrubber drag
+        scrubber.addEventListener('mousedown', (e) => {
+            e.stopPropagation();
+            isDragging = true;
+            seek(e);
+        });
         
         document.addEventListener('mousemove', (e) => {
             if (isDragging) {
@@ -191,41 +192,53 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseup', () => {
             isDragging = false;
         });
+    }
 
-        // Toggle play/pause
-        playBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (video.paused) {
-                video.play();
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
-            } else {
-                video.pause();
-                playIcon.style.display = 'block';
-                pauseIcon.style.display = 'none';
-            }
-        });
-        
-        // Update button state when video plays/pauses
-        video.addEventListener('play', () => {
+    // Toggle play/pause
+    playBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.paused) {
+            video.play();
             playIcon.style.display = 'none';
             pauseIcon.style.display = 'block';
-        });
-        
-        video.addEventListener('pause', () => {
+        } else {
+            video.pause();
             playIcon.style.display = 'block';
             pauseIcon.style.display = 'none';
-        });
-        
-        // Click on video to play/pause
-        video.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (video.paused) {
-                video.play();
-            } else {
-                video.pause();
-            }
-        });
-    }
+        }
+    });
+    
+    // Update button state when video plays/pauses
+    video.addEventListener('play', () => {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+    });
+    
+    video.addEventListener('pause', () => {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    });
+    
+    // Click on video to play/pause
+    video.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+}
+
+// Initialize video controls
+document.addEventListener('DOMContentLoaded', () => {
+    // First video
+    setupVideoControls('redesignVideo', 'videoPlayBtn', 'videoScrubber', 'videoScrubberProgress', 'videoScrubberHandle');
+    
+    // Second video
+    setupVideoControls('redesignVideo2', 'videoPlayBtn2', 'videoScrubber2', 'videoScrubberProgress2', 'videoScrubberHandle2');
+    
+    // Third video
+    setupVideoControls('redesignVideo3', 'videoPlayBtn3', 'videoScrubber3', 'videoScrubberProgress3', 'videoScrubberHandle3');
 });
 

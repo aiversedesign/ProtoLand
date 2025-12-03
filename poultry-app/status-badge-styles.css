@@ -1,0 +1,53 @@
+/* Data Status Badge */
+.data-status-badge {
+    display: none; /* Hidden by default, shown after first save */
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.data-status-badge .status-icon {
+    flex-shrink: 0;
+}
+
+.data-status-badge .status-text {
+    white-space: nowrap;
+}
+
+/* Done State - Green */
+.data-status-badge.done {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.data-status-badge.done .status-icon {
+    fill: #10B981;
+}
+
+/* Pending State - Red/Pink */
+.data-status-badge.pending {
+    background: #FECACA;
+    color: #7F1D1D;
+}
+
+.data-status-badge.pending .status-icon {
+    fill: #EF4444;
+}
+
+/* Streak State - Orange */
+.data-status-badge.streak {
+    background: #FED7AA;
+    color: #7C2D12;
+}
+
+.data-status-badge.streak .status-icon {
+    fill: #F97316;
+}
+

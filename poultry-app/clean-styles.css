@@ -1,0 +1,102 @@
+/* Cleaner Upcoming Card */
+.upcoming-card-clean {
+    background: white;
+    border: 1px solid #F0F0F0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.uc-status-header {
+    margin-bottom: 20px;
+}
+
+.uc-status-text {
+    color: #10B981; /* Green for Confirmed */
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.uc-main-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border-bottom: 1px dashed #E0E0E0;
+    padding-bottom: 24px;
+}
+
+.uc-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.uc-label {
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+}
+
+.uc-value-large {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2C2C2C;
+}
+
+.uc-location-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.uc-location-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.uc-loc-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2C2C2C;
+}
+
+.uc-loc-subtitle {
+    font-size: 12px;
+    color: #666;
+}
+
+.uc-action-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.uc-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #F8F8F8;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.uc-icon-btn:hover {
+    background: #E0E0E0;
+}
+
+.uc-icon-btn.primary {
+    background: #FFF3E0; /* Soft Orange for Reschedule */
+    color: #F57C00;
+}
+
+.uc-icon-btn.primary:hover {
+    background: #FFE0B2;
+}
+

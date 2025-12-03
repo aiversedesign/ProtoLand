@@ -1,0 +1,109 @@
+/* Input Fields */
+.form-input {
+    width: 100%;
+    padding: 16px;
+    background: #F8F8F8;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #2C2C2C;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    background: white;
+    border-color: #0D8AEE;
+    box-shadow: 0 0 0 4px rgba(13, 138, 238, 0.1);
+}
+
+/* Select Dropdown */
+.custom-select-wrapper {
+    position: relative;
+}
+
+.form-select {
+    width: 100%;
+    padding: 16px;
+    background: white;
+    border: 1px solid #2C2C2C;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #2C2C2C;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #2C2C2C;
+}
+
+/* Day Pills */
+.day-pill {
+    min-width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    border: 1px solid #E0E0E0;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #999;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.day-pill.selected {
+    background: #00C6FF; /* Matching the blue in the image */
+    border-color: #00C6FF;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 198, 255, 0.3);
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/* Split Row */
+.form-row-split {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row-split .form-section {
+    flex: 1;
+}
+
+/* Recommendation Box */
+.recommendation-box {
+    background: #EF6C00; /* Orange color from image */
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(239, 108, 0, 0.3);
+}
+
+.rec-icon {
+    font-size: 18px;
+}
+
+.rec-text {
+    line-height: 1.4;
+}
+

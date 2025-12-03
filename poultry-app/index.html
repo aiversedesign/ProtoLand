@@ -147,7 +147,7 @@
         </div>
 
         <!-- Phone 2 - Farm Dashboard -->
-        <div class="mobile-container farm-dashboard">
+        <div class="mobile-container farm-dashboard" style="display: none;">
             <!-- Top Header Bar -->
             <div class="top-header-bar">
                 <div class="nav-profile-avatar">
@@ -933,6 +933,66 @@
                     </div>
                 </div>
 
+                <!-- Upcoming Appointment Card (Redesigned - Calendar Shape) -->
+                <div class="white-card upcoming-card-clean" id="upcomingAppointmentCard" style="display: none;">
+                    <!-- Calendar Loops -->
+                    <!-- <div class="calendar-loops">
+                        <span class="loop"></span>
+                        <span class="loop"></span>
+                        <span class="loop"></span>
+                        <span class="loop"></span>
+                        <span class="loop"></span>
+                        <span class="loop"></span>
+                        <span class="loop"></span>
+                    </div> -->
+                    
+                    <!-- Top Shape / Header -->
+                    <div class="uc-top-shape">
+                        <!-- <div class="uc-icon-circle">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div> -->
+                        <span class="uc-top-text">Upcoming appointment </span>
+                    </div>
+                    
+                    <!-- Body -->
+                    <div class="uc-body">
+                        <div class="uc-info-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="-8.0 -10.0 110.0 135.0" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                                <path d="m25.426 12.266c-0.98047 0.37109-2.7969 1.3984-3.9609 2.2812-1.2148 0.88672-3.0781 1.8203-4.1055 2.0977-2.6562 0.69922-3.2148 1.4922-2.5625 3.4062 0.32812 0.83594 1.0742 2.3281 1.7266 3.3086 0.65234 1.0234 1.1172 1.8633 1.0234 1.957-0.09375 0.046875-1.3516 0.46484-2.8906 0.88672-4.3789 1.3047-6.1055 4.0078-4.1953 6.7109 0.60547 0.88672 1.1211 1.0273 3.7305 1.0273 3.6836 0 3.8672 0.32422 2.6094 4.2891-1.4453 4.5664-1.5391 5.3594-0.83984 7.082 0.79297 1.9141 2.3789 3.0781 4.1484 3.0781 1.1211 0 1.3086 0.14062 1.0273 0.79297-0.74609 2.0039-0.79297 6.9922-0.046875 10.16 1.8633 7.832 7.3672 13.191 16.547 16.129 3.5898 1.1211 4.7109 1.7266 5.7344 2.9844 0.69922 0.83984 2.1445 1.8633 3.1719 2.2852 1.7695 0.69922 1.8633 0.83984 1.8633 2.8438v2.0977h-3.8242c-4.3789 0-5.1719 0.32422-4.9375 1.9102l0.13672 1.1172h14.453l0.13672-1.1172c0.1875-1.2578-0.55859-1.9102-2.1875-1.9102-0.98047 0-1.0742-0.14062-0.79297-1.4453 0.14062-0.79297 0.27734-1.8203 0.27734-2.2383 0-0.51172 0.65234-0.98047 2.0039-1.3047 1.3984-0.375 2.6133-1.2109 3.918-2.6094 1.7695-1.9141 2.0977-2.0547 4.8945-2.332 8.4375-0.79297 15.242-6.4336 16.781-13.938 0.55859-2.6094 0.65234-2.7969 2.9844-4.1016 1.3516-0.74609 2.9805-2.0977 3.6797-2.9844 2.332-3.0312 3.1719-7.9727 1.9609-11.422-0.51562-1.4453-0.42188-1.9102 0.83594-4.3789 2.9375-5.9219 0.83984-12.82-4.6602-15.293-5.1758-2.375-10.77 0.5625-16.875 8.7656-3.7734 5.1289-7.457 6.8984-14.172 6.8516-3.2148-0.046875-4.4727-0.28125-6.5703-1.2109-2.9375-1.3516-4.3359-2.9844-6.4805-7.5508l-1.4922-3.2188 1.3047-2.3281c1.0742-1.9141 1.2617-2.707 1.0742-4.6172-0.51172-4.9414-5.2227-8.8086-10.816-8.7148-1.5391 0-3.6367 0.32422-4.6133 0.65234zm8.4375 3.8203c1.8164 0.83984 3.8203 3.125 3.8203 4.3359 0 0.46484-0.18359 1.4453-0.46484 2.0977l-0.46484 1.2109-2.1445-1.5391c-1.957-1.3984-2.4727-1.5352-5.5-1.5352-2.6133 0-3.8242 0.23047-5.7344 1.2109l-2.4258 1.2109-1.2578-1.3516c-1.4453-1.4453-1.4922-1.3516 0.74609-2.4688 0.88672-0.46875 2.5625-1.4453 3.6367-2.2383 1.1172-0.74609 2.6094-1.5391 3.2617-1.7266 1.5859-0.51172 4.5234-0.13672 6.5273 0.79297zm-1.3516 8.8594c0.69922 0.51172 2.5625 3.4492 4.2891 6.8516 1.7227 3.2617 3.6797 6.5703 4.4258 7.3164 3.1719 3.3125 12.82 4.7539 19.16 2.8438 4.3828-1.3516 6.4336-2.9375 10.629-8.4844 4.1016-5.3125 6.3867-6.9922 9.5078-6.9922 3.7773 0 6.3867 3.2656 6.0117 7.6445-0.23047 2.5195-2.4219 7.4141-4.3789 9.7891-0.65234 0.74609-1.1211 1.7734-1.0273 2.332 0.1875 1.3516 2.0039 1.5391 2.7969 0.32812 0.98047-1.5859 1.4453-1.1211 1.168 1.1172-0.5625 4.0078-2.2852 6.1992-6.6211 8.3906-0.88672 0.46484-1.5391 1.8633-3.3086 6.9922-1.7266 5.082-7.4609 8.8555-14.312 9.418-3.1211 0.27734-3.2148 0.32422-4.3359 2.0977-1.3984 2.1875-2.6094 2.7031-6.5703 2.7031-2.9375 0-3.0781-0.046875-4.7539-1.8203-1.3086-1.4453-2.2852-2.0039-4.6641-2.6094-6.8516-1.7695-12.633-5.9219-14.961-10.77-0.5625-1.2578-1.2617-3.7734-1.5391-5.5938-0.46484-3.0273-0.42188-3.5859 0.55859-6.0586 2.5156-6.5742 3.3086-9.5547 2.7969-10.488-0.74609-1.4453-1.957-0.83984-2.7969 1.3984-1.3516 3.7305-3.2617 5.082-4.8008 3.4961-1.0273-0.98047-0.93359-2.9375 0.23438-6.3398 1.6758-5.0352 0.51172-7.2266-3.9648-7.6914-1.4453-0.14062-2.6094-0.41797-2.6094-0.55859 0-0.1875 1.4453-0.79297 3.168-1.3516 1.7266-0.55859 4.1953-1.6797 5.457-2.4727 1.3047-0.83594 2.9805-1.7695 3.7266-2.1445 1.8203-0.78906 5.1289-0.51172 6.7148 0.65625z"/>
+                                <path d="m24.773 27.742c-1.0273 0.37109-0.74609 2.8398 0.32422 3.168 1.8203 0.55859 3.0781-1.6328 1.7734-2.9375-0.60547-0.60547-1.1211-0.65234-2.0977-0.23047z"/>
+                                <path d="m63.883 48.719c-0.375 0.60547-0.23437 1.3984 0.46484 2.8398 1.1211 2.4727 0.83984 3.9648-1.0703 6.293-2.1445 2.6133-5.8281 4.1953-9.7422 4.1523-4.0117-0.046875-8.9492-1.4922-11.469-3.3594-1.6758-1.2109-4.0078-4.1953-5.5938-7.2227-0.83984-1.5391-2.2383-1.168-2.4219 0.60547-0.32812 3.4492 3.8672 8.6211 8.9023 10.953 8.668 3.9609 16.641 3.1719 22.047-2.1914 3.543-3.4961 4.2891-6.8047 2.4258-10.535-1.1641-2.3281-2.7969-2.9805-3.543-1.5352z"/>
+                            </svg>
+                            <span class="uc-row-text"><strong id="upFlockDisplay">2</strong></span>
+                        </div>
+                        <div class="uc-info-row">
+                            <svg class="uc-row-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span class="uc-row-text" id="upDateTimeDisplay">05 Dec at 8:00 PM</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom Action Bar -->
+                    <div class="uc-action-bar">
+                    
+                        
+                        <!-- Modify / Reschedule -->
+                        <button class="uc-action-item primary" id="changeAppointmentBtn">
+                            <svg class="uc-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            <span class="uc-btn-text">Change</span>
+                        </button>
+
+                        <!-- Cancel -->
+                        <button class="uc-action-item danger" id="cancelAppointmentBtn">
+                            <svg class="uc-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            <span class="uc-btn-text">Cancel</span>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Doctor's Appointment Card (Redesigned) -->
                 <div class="white-card appointment-card-pro">
                     <div class="appointment-header">
@@ -1069,14 +1129,273 @@
                 </div>
             </div>
 
-            <!-- Floating Add Button -->
+            <!-- Floating Add Button with Status -->
             <div class="floating-btn-container">
+                <!-- Status Badge (cycles through states) -->
+                <div class="data-status-badge" id="dataStatusBadge">
+                    <svg class="status-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="status-text">done for today</span>
+                </div>
+                
                 <button class="cta-btn-blue">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
                     </svg>
                     <span>Add daily data</span>
                 </button>
+            </div>
+
+            <!-- Schedule Visit Modal -->
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="schedule-visit-modal" id="scheduleVisitModal">
+                <div class="modal-header">
+                    <h2>Schedule Visit</h2>
+                    <button class="close-modal-btn" id="closeScheduleModal">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="modal-content">
+                    <!-- Flock Selection -->
+                    <div class="form-section">
+                        <label class="section-label">Select Flock</label>
+                        <div class="flock-select-scroll">
+                            <div class="flock-select-card selected" onclick="selectFlock(this)">
+                                <span class="flock-name">Flock A</span>
+                                <span class="flock-detail">Layer Hens • 5,200 Birds</span>
+                            </div>
+                            <div class="flock-select-card" onclick="selectFlock(this)">
+                                <span class="flock-name">Flock B</span>
+                                <span class="flock-detail">Broilers • 3,800 Birds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Date Selection -->
+                    <div class="form-section">
+                        <label class="section-label">Select Date</label>
+                        <div class="date-selector-scroll" id="modalDateSelector">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Time Slot Selection -->
+                    <div class="form-section">
+                        <label class="section-label">Select Time</label>
+                        <div class="time-slots-grid">
+                            <button class="time-slot-btn available" onclick="selectTime(this)">
+                                <span class="slot-time">09:00 AM</span>
+                                <span class="slot-status-dot"></span>
+                            </button>
+                            <button class="time-slot-btn available selected" onclick="selectTime(this)">
+                                <span class="slot-time">11:00 AM</span>
+                                <span class="slot-status-dot"></span>
+                            </button>
+                            <button class="time-slot-btn booked" disabled>
+                                <span class="slot-time">02:00 PM</span>
+                                <span class="slot-booked-label">Booked</span>
+                            </button>
+                            <button class="time-slot-btn available" onclick="selectTime(this)">
+                                <span class="slot-time">04:00 PM</span>
+                                <span class="slot-status-dot"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="primary-btn-pro full-width">Confirm Booking</button>
+                </div>
+            </div>
+
+            <!-- Add Daily Data - Full Page -->
+            <div class="daily-data-page" id="addDailyDataPage">
+                <!-- Header with Back Button -->
+                <div class="page-header">
+                    <button class="back-btn" id="closeDailyDataPage">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <h2>Add Daily Data</h2>
+                    <div style="width: 40px;"></div>
+                </div>
+
+                <div class="page-content">
+                    <!-- Flock Selection -->
+                    <div class="form-section">
+                        <label class="section-label">Select Flock</label>
+                        <div class="flock-select-scroll">
+                            <div class="flock-select-card selected" data-flock="Flock A">
+                                <span class="flock-name">Flock A</span>
+                                <span class="flock-detail">2,500 birds • Week 2</span>
+                            </div>
+                            <div class="flock-select-card" data-flock="Flock B">
+                                <span class="flock-name">Flock B</span>
+                                <span class="flock-detail">3,000 birds • Week 4</span>
+                            </div>
+                            <div class="flock-select-card" data-flock="Flock C">
+                                <span class="flock-name">Flock C</span>
+                                <span class="flock-detail">1,800 birds • Week 1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week Selection -->
+                    <div class="form-section">
+                        <label class="section-label">Select Week</label>
+                        <div class="custom-select-wrapper">
+                            <select class="form-select" id="weekSelect">
+                                <option>Week 1</option>
+                                <option selected>Week 2</option>
+                                <option>Week 3</option>
+                                <option>Week 4</option>
+                            </select>
+                            <div class="select-arrow">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day Selection -->
+                    <div class="form-section">
+                        <label class="section-label">Select Day</label>
+                        <div class="date-selector-scroll no-margin">
+                            <div class="day-pill filled" data-day="1">
+                                <span class="day-text">Day 1</span>
+                                <span class="filled-indicator"></span>
+                            </div>
+                            <div class="day-pill selected" data-day="2">
+                                <span class="day-text">Day 2</span>
+                            </div>
+                            <div class="day-pill filled" data-day="3">
+                                <span class="day-text">Day 3</span>
+                                <span class="filled-indicator"></span>
+                            </div>
+                            <div class="day-pill filled" data-day="4">
+                                <span class="day-text">Day 4</span>
+                                <span class="filled-indicator"></span>
+                            </div>
+                            <div class="day-pill" data-day="5">
+                                <span class="day-text">Day 5</span>
+                            </div>
+                            <div class="day-pill" data-day="6">
+                                <span class="day-text">Day 6</span>
+                            </div>
+                            <div class="day-pill" data-day="7">
+                                <span class="day-text">Day 7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bird Count Section -->
+                    <div class="data-section-card">
+                        <h4 class="section-card-title">Bird Count</h4>
+                        
+                        <div class="form-field-compare">
+                            <label class="field-label">Open Stock</label>
+                            <input type="number" class="form-input-compare" id="openStock" value="2500">
+                            <div class="expected-value">Expected: 2,500</div>
+                        </div>
+
+                        <div class="form-row-split">
+                            <div class="form-field-compare">
+                                <label class="field-label">Mortality</label>
+                                <input type="number" class="form-input-compare" id="mortality" value="15">
+                                <div class="expected-value warn">Expected: ≤10</div>
+                            </div>
+                            <div class="form-field-compare">
+                                <label class="field-label">Culls</label>
+                                <input type="number" class="form-input-compare" id="culls" value="2">
+                                <div class="expected-value ok">Expected: ≤5</div>
+                            </div>
+                        </div>
+
+                        <div class="form-field-compare">
+                            <label class="field-label">Closing Stock</label>
+                            <input type="number" class="form-input-compare" id="closingStock" value="2483" readonly>
+                            <div class="expected-value">Auto-calculated</div>
+                        </div>
+                    </div>
+
+                    <!-- Feed Section -->
+                    <div class="data-section-card">
+                        <h4 class="section-card-title">Feed Consumption</h4>
+                        
+                        <div class="form-field-compare">
+                            <label class="field-label">Total Feed (KG)</label>
+                            <input type="number" class="form-input-compare" id="totalFeed" value="180">
+                            <div class="expected-value">Expected: 175-185 KG</div>
+                        </div>
+
+                        <div class="form-field-compare">
+                            <label class="field-label">Feed per Bird (Gms)</label>
+                            <input type="number" class="form-input-compare" id="feedPerBird" value="72" readonly>
+                            <div class="expected-value ok">Expected: 70-75 gms</div>
+                        </div>
+                    </div>
+
+                    <!-- Deviation Summary -->
+                    <div class="deviation-summary-card" id="deviationSummary">
+                        <div class="deviation-header">
+                            <svg class="deviation-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <span class="deviation-title">Attention Required</span>
+                        </div>
+                        <div class="deviation-list">
+                            <div class="deviation-item">
+                                <span class="deviation-bullet">•</span>
+                                <span>Mortality is <strong>5 birds higher</strong> than standard (≤10)</span>
+                            </div>
+                            <div class="deviation-item">
+                                <span class="deviation-bullet">•</span>
+                                <span>Consider checking ventilation and water quality</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-footer">
+                    <button class="primary-btn-pro full-width" id="submitDailyDataBtn">Save Data</button>
+                </div>
+            </div>
+            <!-- Confirmation Screen -->
+            <div class="booking-confirmation-screen" id="bookingConfirmationScreen">
+                <div class="confirmation-content">
+                    <div class="success-icon-large">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h2>Booking Confirmed!</h2>
+                    <p>Your appointment has been scheduled successfully.</p>
+                    
+                    <div class="confirmation-details-card">
+                        <div class="detail-row">
+                            <span class="detail-label">Date</span>
+                            <span class="detail-value" id="confDate">Today</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Time</span>
+                            <span class="detail-value" id="confTime">11:00 AM</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Flock</span>
+                            <span class="detail-value" id="confFlock">Flock A</span>
+                        </div>
+                    </div>
+
+                    <button class="primary-btn-pro full-width white-text-btn" id="confirmationDoneBtn">Done</button>
+                </div>
             </div>
         </div>
     </div>
@@ -1091,22 +1410,276 @@
             // Target the lower content wrapper (grey background start) if it exists, otherwise the prices card
             const triggerElement = phone3.querySelector('.farm-lower-content') || phone3.querySelector('.prices-card-pro');
 
-            if (!scrollContainer || !header || !triggerElement) return;
+            if (scrollContainer && header && triggerElement) {
+                const handleScroll = () => {
+                    const headerRect = header.getBoundingClientRect();
+                    const triggerRect = triggerElement.getBoundingClientRect();
+                    
+                    // Check if Trigger top edge hits the Header bottom edge
+                    if (triggerRect.top <= headerRect.bottom) {
+                        header.classList.add('bg-grey');
+                    } else {
+                        header.classList.remove('bg-grey');
+                    }
+                };
 
-            const handleScroll = () => {
-                const headerRect = header.getBoundingClientRect();
-                const triggerRect = triggerElement.getBoundingClientRect();
-                
-                // Check if Trigger top edge hits the Header bottom edge
-                if (triggerRect.top <= headerRect.bottom) {
-                    header.classList.add('bg-grey');
-                } else {
-                    header.classList.remove('bg-grey');
+                scrollContainer.addEventListener('scroll', handleScroll);
+                handleScroll(); // Initial check
+            }
+
+            // Schedule Visit Modal Logic
+            const scheduleBtn = phone3.querySelector('.cta-appointment-btn');
+            const modal = phone3.querySelector('#scheduleVisitModal');
+            const overlay = phone3.querySelector('#modalOverlay');
+            const closeBtn = phone3.querySelector('#closeScheduleModal');
+            
+            // Add Daily Data Logic (Full Page)
+            const addDataBtn = phone3.querySelector('.floating-btn-container .cta-btn-blue');
+            const dailyDataPage = phone3.querySelector('#addDailyDataPage');
+            const closeDailyDataBtn = phone3.querySelector('#closeDailyDataPage');
+            const submitDailyDataBtn = phone3.querySelector('#submitDailyDataBtn');
+            const farmMain = phone3.querySelector('.farm-main');
+            const statusBadge = phone3.querySelector('#dataStatusBadge');
+
+            // Status states
+            let currentStatusIndex = 0;
+            const statusStates = [
+                {
+                    class: 'done',
+                    text: 'done for today',
+                    icon: '<circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+                },
+                {
+                    class: 'pending',
+                    text: 'pending 2 days',
+                    icon: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+                },
+                {
+                    class: 'streak',
+                    text: '3 day streak',
+                    icon: '<path d="M12 2c1.5 3 4 4 6 4-2 2-2 4-2 6 0 3-2 6-6 6s-6-3-6-6c0-2 0-4-2-6 2 0 4.5-1 6-4z"/>'
                 }
+            ];
+
+            if (addDataBtn && dailyDataPage && closeDailyDataBtn && statusBadge) {
+                addDataBtn.addEventListener('click', () => {
+                    dailyDataPage.classList.add('visible');
+                    farmMain.style.display = 'none';
+                });
+
+                const closeDailyPage = () => {
+                    dailyDataPage.classList.remove('visible');
+                    farmMain.style.display = 'block';
+                };
+
+                closeDailyDataBtn.addEventListener('click', closeDailyPage);
+
+                if (submitDailyDataBtn) {
+                    submitDailyDataBtn.addEventListener('click', () => {
+                        closeDailyPage();
+                        
+                        // Cycle to next status state
+                        currentStatusIndex = (currentStatusIndex + 1) % statusStates.length;
+                        const newState = statusStates[currentStatusIndex];
+                        
+                        // Update badge
+                        statusBadge.className = 'data-status-badge ' + newState.class;
+                        statusBadge.querySelector('.status-text').textContent = newState.text;
+                        statusBadge.querySelector('.status-icon').innerHTML = newState.icon;
+                        
+                        // Show badge
+                        statusBadge.style.display = 'flex';
+                    });
+                }
+                
+                // Flock Selection Logic
+                const flockCards = dailyDataPage.querySelectorAll('.flock-select-card');
+                flockCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        flockCards.forEach(c => c.classList.remove('selected'));
+                        card.classList.add('selected');
+                    });
+                });
+                
+                // Day Pills Selection Logic
+                const dayPills = dailyDataPage.querySelectorAll('.day-pill');
+                dayPills.forEach(pill => {
+                    pill.addEventListener('click', () => {
+                        dayPills.forEach(p => p.classList.remove('selected'));
+                        pill.classList.add('selected');
+                    });
+                });
+
+                // Auto-calculate Closing Stock and Feed per Bird
+                const openStockInput = dailyDataPage.querySelector('#openStock');
+                const mortalityInput = dailyDataPage.querySelector('#mortality');
+                const cullsInput = dailyDataPage.querySelector('#culls');
+                const closingStockInput = dailyDataPage.querySelector('#closingStock');
+                const totalFeedInput = dailyDataPage.querySelector('#totalFeed');
+                const feedPerBirdInput = dailyDataPage.querySelector('#feedPerBird');
+
+                const calculateValues = () => {
+                    const openStock = parseInt(openStockInput.value) || 0;
+                    const mortality = parseInt(mortalityInput.value) || 0;
+                    const culls = parseInt(cullsInput.value) || 0;
+                    const totalFeed = parseInt(totalFeedInput.value) || 0;
+
+                    const closingStock = openStock - mortality - culls;
+                    closingStockInput.value = closingStock;
+
+                    if (closingStock > 0) {
+                        const feedPerBird = Math.round((totalFeed * 1000) / closingStock);
+                        feedPerBirdInput.value = feedPerBird;
+                    }
+                };
+
+                [openStockInput, mortalityInput, cullsInput, totalFeedInput].forEach(input => {
+                    input.addEventListener('input', calculateValues);
+                });
+            }
+            
+            // Confirmation elements
+            const confirmBookingBtn = phone3.querySelector('.schedule-visit-modal .primary-btn-pro');
+            const confirmationScreen = phone3.querySelector('#bookingConfirmationScreen');
+            const confirmationDoneBtn = phone3.querySelector('#confirmationDoneBtn');
+            
+            // Card elements
+            const appointmentCard = phone3.querySelector('.appointment-card-pro');
+            const upcomingCard = phone3.querySelector('#upcomingAppointmentCard');
+            const cancelApptBtn = phone3.querySelector('#cancelAppointmentBtn');
+            const changeApptBtn = phone3.querySelector('#changeAppointmentBtn');
+            
+            // Confirmation data placeholders
+            const confDateEl = document.getElementById('confDate');
+            const confTimeEl = document.getElementById('confTime');
+            const confFlockEl = document.getElementById('confFlock');
+            const upFlockEl = document.getElementById('upFlock');
+            const upTimeEl = document.getElementById('upTime');
+
+            if (scheduleBtn && modal && overlay && closeBtn) {
+                scheduleBtn.addEventListener('click', () => {
+                    modal.classList.add('open');
+                    overlay.classList.add('open');
+                });
+                
+                const closeModal = () => {
+                    modal.classList.remove('open');
+                    overlay.classList.remove('open');
+                };
+                
+                closeBtn.addEventListener('click', closeModal);
+                overlay.addEventListener('click', closeModal);
+
+                // Confirm Booking Flow
+                if (confirmBookingBtn && confirmationScreen) {
+                    confirmBookingBtn.addEventListener('click', () => {
+                        // Get selected values (simplified)
+                        const selectedFlock = document.querySelector('.flock-select-card.selected .flock-name')?.innerText || 'Flock A';
+                        const selectedTimeBtn = document.querySelector('.time-slot-btn.selected');
+                        const selectedTime = selectedTimeBtn?.querySelector('.slot-time')?.innerText || selectedTimeBtn?.innerText || '11:00 AM';
+                        const selectedDate = document.querySelector('.date-card.selected .day-number')?.innerText ? 
+                                           document.querySelector('.date-card.selected .day-number').innerText + ' ' + document.querySelector('.date-card.selected .month-name').innerText : 'Today';
+
+                        // Update Confirmation Details
+                        if(confFlockEl) confFlockEl.innerText = selectedFlock;
+                        if(confTimeEl) confTimeEl.innerText = selectedTime;
+                        if(confDateEl) confDateEl.innerText = selectedDate;
+
+                        // Close Modal
+                        closeModal();
+                        
+                        // Show Confirmation Screen
+                        confirmationScreen.classList.add('visible');
+                    });
+                }
+
+                // Done Button Flow
+                if (confirmationDoneBtn) {
+                    confirmationDoneBtn.addEventListener('click', () => {
+                        // Hide Confirmation Screen
+                        confirmationScreen.classList.remove('visible');
+                        
+                        // Update Upcoming Card Details
+                        // New IDs for Cleaner Card
+                        const upDateTimeDisplay = document.getElementById('upDateTimeDisplay');
+                        const upFlockDisplay = document.getElementById('upFlockDisplay');
+
+                        if(upFlockDisplay) upFlockDisplay.innerText = confFlockEl.innerText;
+                        if(upDateTimeDisplay) upDateTimeDisplay.innerText = confDateEl.innerText + ' at ' + confTimeEl.innerText;
+
+                        // Toggle Cards - Show Upcoming, Keep Booking available
+                        // if (appointmentCard) appointmentCard.style.display = 'none'; // Removed to allow booking another
+                        if (upcomingCard) upcomingCard.style.display = 'block';
+                    });
+                }
+
+                // Cancel Appointment
+                if (cancelApptBtn) {
+                    cancelApptBtn.addEventListener('click', () => {
+                        if (confirm('Are you sure you want to cancel this appointment?')) {
+                            // if (appointmentCard) appointmentCard.style.display = 'block'; // Already visible
+                            if (upcomingCard) upcomingCard.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Change/Reschedule Appointment
+                if (changeApptBtn) {
+                    changeApptBtn.addEventListener('click', () => {
+                         modal.classList.add('open');
+                         overlay.classList.add('open');
+                    });
+                }
+            }
+
+            // Populate Date Selector in Modal
+            const modalDateContainer = document.getElementById('modalDateSelector');
+            if (modalDateContainer) {
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const today = new Date();
+                let dateHtml = '';
+
+                // Show 9 days total: today and tomorrow (disabled) + 7 available days
+                for (let i = 0; i < 9; i++) {
+                    const date = new Date(today);
+                    date.setDate(today.getDate() + i);
+                    const dayName = days[date.getDay()];
+                    const dayNumber = date.getDate();
+                    const monthName = months[date.getMonth()];
+                    const isToday = i === 0;
+                    const isTomorrow = i === 1;
+                    const isDisabled = i < 2;
+                    const isFirstAvailable = i === 2;
+                    
+                    dateHtml += `
+                        <div class="date-card ${isFirstAvailable ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}" ${!isDisabled ? 'onclick="selectModalDate(this)"' : ''}>
+                            <span class="day-name">${dayName}</span>
+                            <span class="day-number">${dayNumber}</span>
+                            <span class="month-name">${monthName}</span>
+                            ${isToday ? '<span class="today-label">TODAY</span>' : ''}
+                        </div>
+                    `;
+                }
+                modalDateContainer.innerHTML = dateHtml;
+            }
+
+            // Helper functions for selection
+            window.selectModalDate = function(element) {
+                document.querySelectorAll('#modalDateSelector .date-card').forEach(card => card.classList.remove('selected'));
+                element.classList.add('selected');
             };
 
-            scrollContainer.addEventListener('scroll', handleScroll);
-            handleScroll(); // Initial check
+            window.selectFlock = function(element) {
+                document.querySelectorAll('.flock-select-card').forEach(card => card.classList.remove('selected'));
+                element.classList.add('selected');
+            };
+
+            window.selectTime = function(element) {
+                if (element.disabled || element.classList.contains('booked')) return;
+                document.querySelectorAll('.time-slot-btn').forEach(btn => btn.classList.remove('selected'));
+                element.classList.add('selected');
+            };
         });
     </script>
 </body>

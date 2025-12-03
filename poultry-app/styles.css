@@ -830,6 +830,13 @@ body {
     border-color: #0D8AEE;
 }
 
+.date-card.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #f5f5f5;
+}
+
 .date-card .day-name {
     font-size: 12px;
     color: #999;
@@ -1408,7 +1415,7 @@ body {
     margin-bottom: 20px;
     padding: 16px;
     background: rgba(255, 255, 255, 0.7);
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .benefit-item {
@@ -1435,7 +1442,7 @@ body {
 
 .cta-appointment-btn {
     width: 100%;
-    background: #0D8AEE;
+    background: #313131;
     color: white;
     border: none;
     border-radius: 100px;
@@ -1455,5 +1462,1193 @@ body {
     background: #0B7AD1;
     transform: translateY(-1px);
     box-shadow: 0 6px 16px rgba(13, 138, 238, 0.4);
+}
+
+/* Schedule Visit Modal */
+.schedule-visit-modal {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90%;
+    background: #fff;
+    border-radius: 24px 24px 0 0;
+    z-index: 200;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+}
+
+.schedule-visit-modal.open {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.close-modal-btn {
+    background: #f5f5f5;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.flock-select-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+}
+.flock-select-scroll::-webkit-scrollbar { display: none; }
+
+.flock-select-card {
+    min-width: 160px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid #f0f0f0;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.flock-select-card.selected {
+    border-color: #0D8AEE;
+    background: #E3F2FD;
+}
+
+.flock-name {
+    display: block;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.flock-detail {
+    font-size: 12px;
+    color: #666;
+}
+
+.time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.time-slot-btn {
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    font-weight: 600;
+    color: #2c2c2c;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.time-slot-btn.selected {
+    background: #2c2c2c;
+    color: white;
+    border-color: #2c2c2c;
+}
+
+.time-slot-btn.available {
+    border-color: #4CAF50;
+}
+
+.time-slot-btn.available.selected {
+    background: #2c2c2c;
+    border-color: #2c2c2c;
+}
+
+.time-slot-btn.booked {
+    background: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.slot-time {
+    font-weight: 600;
+}
+
+.slot-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4CAF50;
+}
+
+.time-slot-btn.selected .slot-status-dot {
+    background: white;
+}
+
+.slot-booked-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.modal-footer {
+    padding: 20px 24px;
+    border-top: 1px solid #f0f0f0;
+    background: #fff;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Overlay when modal is open */
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 150;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Confirmation Screen */
+.booking-confirmation-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #10B981; /* Success Green */
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: white;
+    transform: translateY(100%); /* Slide up effect or just fade */
+    transition: transform 0.3s ease-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.booking-confirmation-screen.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.confirmation-content {
+    text-align: center;
+    width: 100%;
+    max-width: 320px;
+}
+
+.success-icon-large {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    color: #10B981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.booking-confirmation-screen h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.booking-confirmation-screen p {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-bottom: 32px;
+}
+
+.confirmation-details-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    opacity: 0.8;
+}
+
+.detail-value {
+    font-weight: 600;
+}
+
+.white-text-btn {
+    background: white;
+    color: #10B981;
+    border: none;
+}
+
+.white-text-btn:hover {
+    background: #f0f0f0;
+}
+
+/* Upcoming Appointment Card */
+.upcoming-card-pro {
+    background: #FFF9E3; /* Requested bg */
+    border: 1px solid #FFE082;
+}
+
+.upcoming-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.upcoming-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #BD831A; /* Requested highlight color */
+    letter-spacing: 0.5px;
+}
+
+.upcoming-icon {
+    color: #BD831A; /* Requested highlight color */
+}
+
+.upcoming-details h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #BD831A; /* Requested heading color */
+    margin-bottom: 6px;
+}
+
+.upcoming-time-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #2C2C2C;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.upcoming-note {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+/* Tertiary Buttons for Upcoming Card */
+.tertiary-icon-btn {
+    flex: 1;
+    background: transparent;
+    border: none; /* Minimal */
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3D3D3A; /* Requested CTA color */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s;
+    border-radius: 8px;
+}
+
+.tertiary-icon-btn:hover {
+    background: rgba(61, 61, 58, 0.05);
+}
+
+.tertiary-icon-btn svg {
+    width: 16px;
+    height: 16px;
+}
+/* Input Fields */
+.form-input {
+    width: 100%;
+    padding: 16px;
+    background: #F8F8F8;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #2C2C2C;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    background: white;
+    border-color: #0D8AEE;
+    box-shadow: 0 0 0 4px rgba(13, 138, 238, 0.1);
+}
+
+/* Select Dropdown */
+.custom-select-wrapper {
+    position: relative;
+}
+
+.form-select {
+    width: 100%;
+    padding: 16px;
+    background: white;
+    border: 1px solid #2C2C2C;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #2C2C2C;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #2C2C2C;
+}
+
+/* Day Pills */
+.day-pill {
+    min-width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    border: 1px solid #E0E0E0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+    color: #999;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.day-pill .day-text {
+    display: block;
+}
+
+.day-pill.selected {
+    background: #00C6FF;
+    border-color: #00C6FF;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 198, 255, 0.3);
+}
+
+.day-pill.selected .day-text {
+    color: white;
+}
+
+/* Filled Indicator - Green dot with checkmark */
+.day-pill.filled .filled-indicator {
+    width: 16px;
+    height: 16px;
+    background: #10B981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.day-pill.filled .filled-indicator::before {
+    content: '✓';
+}
+
+.day-pill.filled.selected .filled-indicator {
+    background: white;
+    color: #00C6FF;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/* Split Row */
+.form-row-split {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row-split .form-section {
+    flex: 1;
+}
+
+/* Recommendation Box */
+.recommendation-box {
+    background: #EF6C00; /* Orange color from image */
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(239, 108, 0, 0.3);
+}
+
+.rec-icon {
+    font-size: 18px;
+}
+
+.rec-text {
+    line-height: 1.4;
+}
+
+/* Cleaner Upcoming Card */
+.upcoming-card-clean {
+    background: white;
+    border: 2px solid #BBDEFB;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.uc-status-header {
+    margin-bottom: 20px;
+}
+
+.uc-status-text {
+    color: #10B981; /* Green for Confirmed */
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.uc-main-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border-bottom: 1px dashed #E0E0E0;
+    padding-bottom: 24px;
+}
+
+.uc-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.uc-label {
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+}
+
+.uc-value-large {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2C2C2C;
+}
+
+.uc-location-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.uc-location-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.uc-loc-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2C2C2C;
+}
+
+.uc-loc-subtitle {
+    font-size: 12px;
+    color: #666;
+}
+
+.uc-action-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.uc-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #F8F8F8;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.uc-icon-btn:hover {
+    background: #E0E0E0;
+}
+
+.uc-icon-btn.primary {
+    background: #FFF3E0; /* Soft Orange for Reschedule */
+    color: #F57C00;
+}
+
+.uc-icon-btn.primary:hover {
+    background: #FFE0B2;
+}
+
+/* Top Shape Card Styles */
+.upcoming-card-clean {
+    background: white;
+    border: none;
+    box-shadow: none;
+    border-radius: 24px;
+    padding: 0; /* Reset padding to allow header to flush */
+    overflow: visible; /* Allow loops to show outside */
+    /* border: 1px solid #BBDEFB; */
+    position: relative;
+    margin-top: 20px; /* Space for loops */
+}
+
+/* Calendar Loops -- working */
+.calendar-loops {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+.calendar-loops .loop {
+    width: 20px;
+    height: 20px;
+    background: #6b6b6b;
+    border-radius: 50%;
+    /* border: 3px solid white; */
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+}
+
+.uc-top-shape {
+    background: #BBDEFB; /* Light Blue */
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.uc-icon-circle {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F57C00; /* Orange Icon */
+    font-size: 12px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.uc-top-text {
+    font-size: 13px;
+    color: #1565C0;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.uc-body {
+    padding: 20px;
+    background: white;
+}
+
+.uc-info-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.uc-info-row:last-child {
+    margin-bottom: 0;
+}
+
+.uc-row-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: #666;
+}
+
+.uc-row-text {
+    font-size: 15px;
+    color: #2C2C2C;
+    font-weight: 500;
+}
+
+/* Bottom Action Bar with Dividers */
+.uc-action-bar {
+    display: flex;
+    border-top: 1px solid #F0F0F0;
+    padding: 6px 0;
+}
+
+.uc-action-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+}
+
+.uc-action-item:active {
+    background: #F9F9F9;
+}
+
+/* Divider */
+.uc-action-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: #E0E0E0;
+}
+
+.uc-btn-text {
+    /* Default Color */
+    color: #2C2C2C; 
+}
+
+.uc-action-item.danger .uc-btn-text {
+    color: #C62828;
+}
+
+.uc-action-item.primary .uc-btn-text {
+    color: #2C2C2C;
+}
+
+.uc-btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.uc-action-item.danger svg {
+    stroke: #EF5350;
+}
+
+.uc-action-item.primary svg {
+    stroke: #2C2C2C;
+}
+
+/* Better Calendar Loops */
+.calendar-loops {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px; /* Wider spread */
+    z-index: 10;
+}
+
+.calendar-loops .loop {
+    width: 16px;
+    height: 24px;
+    border-radius: 10px;
+    /* border: 1px solid #b0b0b0; */
+}
+
+/* Better Top Shape */
+.uc-top-shape {
+    background: #BBDEFB;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 24px 24px 0 0; /* Explicit top radius */
+}
+
+.uc-icon-circle {
+    width: 28px;
+    height: 28px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F57C00;
+    font-size: 14px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.uc-top-text {
+    font-size: 16px;
+    color: #3a576f;
+    font-weight: 500; /* Slightly bolder */
+    line-height: 1.4;
+}
+
+/* Improved Body Spacing */
+.uc-body {
+    padding: 24px;
+    background: white;
+}
+
+.uc-info-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.uc-info-row:last-child {
+    margin-bottom: 0;
+}
+
+.uc-row-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: #555; /* Darker grey for icons */
+}
+
+.uc-row-text {
+    font-size: 16px; /* Slightly larger */
+    color: #2C2C2C;
+    font-weight: 500;
+}
+
+.uc-row-text strong {
+    font-weight: 700;
+}
+
+/* Polished Action Bar */
+.uc-action-bar {
+    display: flex;
+    border-top: 1px solid #EEEEEE;
+    padding: 4px 0;
+}
+
+.uc-action-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    color: #444;
+}
+
+.uc-action-item:active {
+    background: #FAFAFA;
+}
+
+/* Refined Divider */
+.uc-action-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 30%;
+    height: 40%;
+    width: 1px;
+    background: #DDDDDD;
+}
+
+.uc-action-item.danger {
+    color: #D32F2F;
+}
+
+.uc-action-item.danger svg {
+    stroke: #D32F2F;
+}
+
+.uc-action-item.primary svg {
+    stroke: #444;
+}
+
+/* Daily Data Full Page */
+.daily-data-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #F5F5F5;
+    z-index: 250;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.daily-data-page.visible {
+    transform: translateX(0);
+}
+
+/* Page Header */
+.page-header {
+    background: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #E0E0E0;
+    flex-shrink: 0;
+}
+
+.page-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2C2C2C;
+    margin: 0;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #F5F5F5;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #2C2C2C;
+}
+
+.back-btn:active {
+    background: #E0E0E0;
+}
+
+/* Page Content */
+.page-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.page-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* Data Section Cards */
+.data-section-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.section-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2C2C2C;
+    margin: 0 0 16px 0;
+}
+
+/* Form Field with Comparison */
+.form-field-compare {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.form-field-compare:last-child {
+    margin-bottom: 0;
+}
+
+.field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.form-input-compare {
+    width: 100%;
+    padding: 14px 16px;
+    background: #F8F8F8;
+    border: 2px solid #E0E0E0;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2C2C2C;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-input-compare:focus {
+    background: white;
+    border-color: #0D8AEE;
+    box-shadow: 0 0 0 4px rgba(13, 138, 238, 0.1);
+}
+
+.form-input-compare:read-only {
+    background: #F0F0F0;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Expected Value Indicators */
+.expected-value {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.expected-value.ok {
+    color: #10B981;
+    font-weight: 600;
+}
+
+.expected-value.ok::before {
+    content: '✓';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #E8F5E9;
+    color: #10B981;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 11px;
+}
+
+.expected-value.warn {
+    color: #F59E0B;
+    font-weight: 600;
+}
+
+.expected-value.warn::before {
+    content: '!';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #FFF3E0;
+    color: #F59E0B;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Deviation Summary Card */
+.deviation-summary-card {
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #FFB74D;
+}
+
+.deviation-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.deviation-icon {
+    color: #F57C00;
+    flex-shrink: 0;
+}
+
+.deviation-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #E65100;
+}
+
+.deviation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.deviation-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #5D4037;
+    line-height: 1.5;
+}
+
+.deviation-bullet {
+    color: #F57C00;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.deviation-item strong {
+    color: #E65100;
+    font-weight: 700;
+}
+
+/* Page Footer */
+.page-footer {
+    padding: 16px 20px;
+    background: white;
+    border-top: 1px solid #E0E0E0;
+    flex-shrink: 0;
+}
+
+/* Data Status Badge */
+.data-status-badge {
+    display: none; /* Hidden by default, shown after first save */
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.data-status-badge .status-icon {
+    flex-shrink: 0;
+}
+
+.data-status-badge .status-text {
+    white-space: nowrap;
+}
+
+/* Done State - Green */
+.data-status-badge.done {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.data-status-badge.done .status-icon {
+    fill: #10B981;
+}
+
+/* Pending State - Red/Pink */
+.data-status-badge.pending {
+    background: #FECACA;
+    color: #7F1D1D;
+}
+
+.data-status-badge.pending .status-icon {
+    fill: #EF4444;
+}
+
+/* Streak State - Orange */
+.data-status-badge.streak {
+    background: #FED7AA;
+    color: #7C2D12;
+}
+
+.data-status-badge.streak .status-icon {
+    fill: #F97316;
 }
 
